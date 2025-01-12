@@ -33,7 +33,7 @@ def Sorting(request):
 
 
 def home(request):
-    return render(request, 'base.html')  # Render the actual home page
+    return render(request, 'index.html')  # Render the actual home page
 
 def about(request):
     return render(request, 'about.html')  # Render the about page
