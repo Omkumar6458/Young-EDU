@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Coding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+            padding: 20px;
+        }
+        section {
+            padding: 20px;
+            margin: 20px 30px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            section {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color:rgb(60, 183, 231);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color:rgb(43, 150, 192);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+<h1> Introduction of Coding</h1>
+    <!-- What is Coding Section -->
+    <section>
+        <h2>What is Coding?</h2>
+        <div class="content">
+            <p>Coding, also known as programming, is the process of writing instructions that a computer can understand and execute. These instructions tell the computer what to do, such as displaying a webpage, performing a calculation, or controlling hardware like a robot.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Types of Programming Languages</h2>
+        <div class="content">
+            <p>There are various programming languages, each designed for specific tasks. Some popular types include:</p>
+            <ul>
+                <li><strong>C:</strong> A general-purpose, high-performance programming language often used in system programming.</li>
+                <li><strong>C++:</strong> An extension of C that supports object-oriented programming, commonly used in game development and large-scale applications.</li>
+                <li><strong>Java:</strong> A widely-used language known for its portability across different platforms, often used in web applications and Android development.</li>
+                <li><strong>Python:</strong> A versatile, easy-to-learn language used for web development, data analysis, machine learning, and more.</li>
+                <li><strong>JavaScript:</strong> The most popular language for web development, used to create interactive websites and dynamic content.</li>
+                <li><strong>HTML:</strong> A markup language used to structure content on the web, such as text, images, and links.</li>
+                <li><strong>CSS:</strong> A style sheet language used to describe the presentation of HTML elements, such as layout, colors, and fonts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Uses of Coding</h2>
+        <div class="content">
+            <p>Coding is used in almost every aspect of our modern world. Some common uses include:</p>
+            <ul>
+                <li><strong>Web Development:</strong> Coding helps create websites, web applications, and interactive content.</li>
+                <li><strong>Mobile Apps:</strong> Coding is essential for building mobile applications for Android, iOS, and other platforms.</li>
+                <li><strong>Game Development:</strong> Coding is used to create video games across different devices and platforms.</li>
+                <li><strong>Data Science & Machine Learning:</strong> Coding is used to process data, create models, and make predictions.</li>
+                <li><strong>Automation:</strong> Coding helps automate repetitive tasks, saving time and reducing errors.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>How to Learn the Fundamentals of Coding</h2>
+        <div class="content">
+            <p>Learning to code can be a rewarding experience. Here are some steps to get started:</p>
+            <ol>
+                <li><strong>Choose a Language:</strong> Start with a beginner-friendly language like Python or JavaScript to get familiar with basic programming concepts.</li>
+                <li><strong>Understand the Basics:</strong> Learn core programming concepts such as variables, data types, control structures (if statements, loops), functions, and objects.</li>
+                <li><strong>Practice:</strong> Regularly solve coding challenges, work on small projects, and experiment with the code to improve your skills.</li>
+                <li><strong>Learn from Resources:</strong> Use online tutorials, books, coding platforms (like Codecademy or freeCodeCamp), and YouTube videos to learn and practice coding.</li>
+                <li><strong>Build Projects:</strong> Create your own projects to apply what you've learned and gain hands-on experience.</li>
+            </ol>
+        </div>
+    </section>
+
+</body>
+</html>

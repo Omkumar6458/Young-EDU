@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Syntax Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f7fc;
+            position: relative;
+        }
+        .quiz-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #f7f7f7;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .options li:hover {
+            background-color: #e1e1e1;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #2c6a70;
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #3f5e78;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #488490;
+        }
+        .btn-secondary:hover {
+            background-color: #336775;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            z-index: 10;
+        }
+        .back-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="{% url 'quiz' %}" class="back-btn" id ="back-btn"><-Back</a>
+    
+    <div class="quiz-container" id="quiz-container">
+        <div id="quiz-content">
+        </div>
+        <div>
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which language uses #include <stdio.h> to include libraries?",
+                options: ["Python", "C", "Java", "JavaScript"],
+                answer: 1
+            },
+            {
+                question: "How do you define a function in Python?",
+                options: ["function myFunction() {}", "def myFunction():", "void myFunction() {}", "fun myFunction():"],
+                answer: 1
+            },
+            {
+                question: "Which symbol is used for single-line comments in JavaScript?",
+                options: ["//", "/*", "<!--", "#"],
+                answer: 0
+            },
+            {
+                question: "What is the correct way to print in Java?",
+                options: ["print()", "System.out.println()", "cout <<", "echo"],
+                answer: 1
+            },
+            {
+                question: "What is the syntax for a for loop in C++?",
+                options: ["for (int i = 0; i < n; i++)", "foreach (int i in n)", "for i in range(n):", "for i = 0 to n"],
+                answer: 0
+            },
+            {
+                question: "How do you declare a variable in JavaScript?",
+                options: ["let x = 5;", "int x = 5;", "var x := 5;", "x = 5;"],
+                answer: 0
+            },
+            {
+                question: "Which language uses 'public static void main'?",
+                options: ["C++", "Java", "Python", "JavaScript"],
+                answer: 1
+            },
+            {
+                question: "How do you start a multi-line comment in C?",
+                options: ["//", "/*", "#", "<!--"],
+                answer: 1
+            },
+            {
+                question: "How do you write 'Hello, World!' in Python?",
+                options: ["System.out.println('Hello, World!')", "print('Hello, World!')", "cout << 'Hello, World!';", "echo 'Hello, World!';"],
+                answer: 1
+            },
+            {
+                question: "Which language uses the 'console.log()' syntax for debugging?",
+                options: ["C++", "Java", "Python", "JavaScript"],
+                answer: 3
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+
+        const quizContent = document.getElementById("quiz-content");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            quizContent.innerHTML = `
+                <div class="question">${index + 1}. ${question.question}</div>
+                <ul class="options">
+                    ${question.options.map((option, i) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+            `;
+
+            prevBtn.disabled = index === 0;
+            nextBtn.style.display = index === questions.length - 1 ? "none" : "inline-block";
+            submitBtn.style.display = index === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function handleNavigation(offset) {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+
+            currentQuestionIndex += offset;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function calculateScore() {
+            return userAnswers.reduce((score, answer, index) => 
+                answer === questions[index].answer ? score + 1 : score
+            , 0);
+        }
+
+        function showResult() {
+            const score = calculateScore();
+            quizContent.innerHTML = `
+                <div class="result">Your score: ${score}/${questions.length}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            loadQuestion(currentQuestionIndex);
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+        }
+
+        prevBtn.addEventListener("click", () => handleNavigation(-1));
+        nextBtn.addEventListener("click", () => handleNavigation(1));
+        submitBtn.addEventListener("click", showResult);
+
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Sum of Digits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            color: rgb(67, 66, 66);
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .example {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .interactive {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: #253565;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #28a6c0;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            height: 351px;
+            border: none;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            iframe {
+                height: 200px;
+            }
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color:rgb(60, 183, 231);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color:rgb(43, 150, 192);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+
+    <header>
+        <h1>Learn About Sum of Digits</h1>
+    </header>
+    <div class="content">
+        <h2>Watch this Video to Understand sum of Digits</h2>
+        <iframe src="https://www.youtube.com/embed/tutorial-video-id" allowfullscreen></iframe>
+
+        <h2>What is the Sum of Digits?</h2>
+        <p>The sum of digits is the total obtained by adding all the digits of a number together. For example, the sum of the digits in <strong>123</strong> is:</p>
+        <div class="example">
+            <p><strong>1 + 2 + 3 = 6</strong></p>
+        </div>
+
+        
+        <h2>Try it Yourself!</h2>
+        <div class="interactive">
+            <label for="number">Enter a number:</label>
+            <input type="number" id="number" placeholder="Enter a number here">
+            <button onclick="calculateSum()">Calculate Sum of Digits</button>
+            <div class="result" id="result"></div>
+        </div>
+
+        <script>
+            function calculateSum() {
+                const numberInput = document.getElementById('number').value;
+                if (!numberInput || isNaN(numberInput)) {
+                    document.getElementById('result').textContent = 'Please enter a valid number.';
+                    return;
+                }
+
+                let sum = 0;
+                const digits = numberInput.split('').filter(char => !isNaN(char));
+                digits.forEach(digit => sum += parseInt(digit, 10));
+
+                document.getElementById('result').textContent = `The sum of the digits is: ${sum}`;
+            }
+        </script>
+    </div>
+</body>
+</html>

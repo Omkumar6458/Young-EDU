@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .video-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="{% url 'sorting' %}" class="btn"><-Back</a>
+        <h1>Understanding Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <section class="video-container">
+            <h2>Watch This Video to Learn About Sorting Algorithms</h2>
+            <video controls>
+                <source src="https://youtu.be/your-video-url" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section class="content-section">
+            <h2>What are Sorting Algorithms?</h2>
+            <p>
+                Sorting algorithms are methods used to arrange elements in a list or array in a specific order, such as ascending or descending. Examples include:
+            </p>
+            <p><strong>Bubble Sort, Quick Sort, Merge Sort, Insertion Sort...</strong></p>
+        </section>
+
+        <section class="content-section">
+            <h2>How Sorting Algorithms Work?</h2>
+            <p>
+                Different sorting algorithms use various techniques to sort data:
+            </p>
+            <ul>
+                <li><strong>Bubble Sort:</strong> Compares adjacent elements and swaps them if they are in the wrong order.</li>
+                <li><strong>Quick Sort:</strong> Divides the array into partitions and sorts recursively.</li>
+                <li><strong>Merge Sort:</strong> Divides the array into halves, sorts each half, and then merges them.</li>
+                <li><strong>Insertion Sort:</strong> Builds the sorted array one element at a time.</li>
+            </ul>
+            <p>Examples:</p>
+            <ul>
+                <li>Input: [4, 2, 7, 1]</li>
+                <li>Bubble Sort Output: [1, 2, 4, 7]</li>
+                <li>Quick Sort Output: [1, 2, 4, 7]</li>
+            </ul>
+        </section>
+
+        <div class="section">
+            <h2>Applications of Sorting Algorithms in Code</h2>
+            <p>
+                Sorting is a fundamental concept in computer science with numerous applications:
+                <br><br>
+                1. *Data Organization*: Sorting large datasets for analysis or display.
+                <br>
+                2. *Searching Algorithms*: Many search algorithms depend on sorted data.
+                <br>
+                3. *Optimization*: Sorting is often a preliminary step in solving complex problems.
+                <br><br>
+                Learning sorting algorithms is essential for efficient problem-solving and coding interviews.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

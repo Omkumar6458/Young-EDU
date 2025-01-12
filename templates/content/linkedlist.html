@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Linked List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            color: rgb(50, 49, 49);
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .video h1{
+            text-align: center;
+        }
+        .container {
+            margin: auto;
+            padding: 20px;
+        }
+        .code-example {
+            background: #e7e7e7;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .video-container{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+     iframe { 
+            width: 70%;
+            height: 355px;
+        }
+       
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tab {
+            background: #ddd;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .tab.active {
+            background: #396584;
+            color: white;
+            border-color: #36516e;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right:20px;
+            background-color:rgb(67, 60, 59);
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .back-btn:hover {
+            background-color:rgb(68, 60, 59);
+        }
+       </style>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+    <header>
+        <h1>Understand About Linked List</h1>
+    </header>
+    <div class="container">
+        
+<section class="video">
+    <h1>Watch this video to Understand Linked List</h1>    
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/3h7E8iXqZ4E" title="Learn Functions in Programming Languages"></iframe>
+    </div>
+</section>
+       
+        <section>
+            <h2>What is a Linked List?</h2>
+            <p>A linked list is a linear data structure where elements are stored as nodes. Each node contains two parts:</p>
+            <ul>
+                <li><strong>Data:</strong> The value stored in the node.</li>
+                <li><strong>Pointer:</strong> A reference to the next node in the sequence.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Code Implementation</h2>
+            <div class="tabs">
+                <div class="tab active" data-tab="cpp" onclick="switchTab('cpp')">C++</div>
+                <div class="tab" data-tab="java" onclick="switchTab('java')">Java</div>
+                <div class="tab" data-tab="python" onclick="switchTab('python')">Python</div>
+            </div>
+
+            <div id="cpp" class="tab-content active">
+                <h3>Linked List in C++</h3>
+                <div class="code-example">
+<pre>
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+void printList(Node* n) {
+    while (n != nullptr) {
+        cout << n->data << " -> ";
+        n = n->next;
+    }
+    cout << "NULL" << endl;
+}
+
+int main() {
+    Node* head = new Node{1, nullptr};
+    Node* second = new Node{2, nullptr};
+    Node* third = new Node{3, nullptr};
+
+    head->next = second;
+    second->next = third;
+
+    printList(head);
+    return 0;
+}
+</pre>
+                </div>
+            </div>
+
+            <div id="java" class="tab-content">
+                <h3>Linked List in Java</h3>
+                <div class="code-example">
+<pre>
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        Node head = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+
+        head.next = second;
+        second.next = third;
+
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("NULL");
+    }
+}
+</pre>
+                </div>
+            </div>
+
+            <div id="python" class="tab-content">
+                <h3>Linked List in Python</h3>
+                <div class="code-example">
+<pre>
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def printList(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("NULL")
+
+# Example usage
+ll = LinkedList()
+ll.head = Node(1)
+second = Node(2)
+third = Node(3)
+
+ll.head.next = second
+second.next = third
+
+ll.printList()
+</pre>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

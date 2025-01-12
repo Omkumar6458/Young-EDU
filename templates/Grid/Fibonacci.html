@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .video-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="{% url 'Fibonacci' %}" class="btn"><-Back</a>
+        <h1>Understanding Fibonacci Series</h1>
+    </header>
+
+    <main>
+        <section class="video-container">
+            <h2>Watch This Video to Understand Fibonacci Series</h2>
+            <video controls>
+                <source src="https://youtu.be/your-video-url" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section class="content-section">
+            <h2>What is a Fibonacci Series?</h2>
+            <p>
+                The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones.
+                The series starts with 0 and 1. For example:
+            </p>
+            <p><strong>0, 1, 1, 2, 3, 5, 8, 13, 21, 34...</strong></p>
+        </section>
+
+        <section class="content-section">
+            <h2>How to Calculate Fibonacci Numbers?</h2>
+            <p>
+                To calculate the Fibonacci sequence, follow these steps:
+            </p>
+            <ul>
+                <li>Start with 0 and 1 as the first two numbers.</li>
+                <li>Add the last two numbers to get the next number in the series.</li>
+                <li>Repeat the process for the desired number of terms.</li>
+            </ul>
+            <p>For example:</p>
+            <ul>
+                <li>0, 1 → 0+1 = 1 → 1+1 = 2 → 1+2 = 3 → 2+3 = 5 → ...</li>
+            </ul>
+        </section>
+
+        <div class="section">
+            <h2>How Fibonacci is Used in Code</h2>
+            <p>
+                Fibonacci series calculations are commonly implemented in programming. Here’s how:
+                <br><br>
+                1. *Input*: A user specifies the number of terms they want to generate.
+                <br>
+                2. *Calculation*: The program uses a loop or recursion to calculate the sequence.
+                <br>
+                3. *Output*: The series is displayed to the user.
+                <br><br>
+                Fibonacci sequences are used in algorithms, data structures, and even in nature for modeling growth patterns.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

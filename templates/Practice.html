@@ -1,0 +1,209 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{% block title %}Adward{% endblock %}</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/grid.css' %}" rel="stylesheet" /> 
+
+  <style>
+    /* General styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top_container {
+      padding: 20px;
+    }
+
+    h2 {
+      color: lightblue;
+      text-align: center;
+    }
+
+    p {
+      color: yellow;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .block {
+      width: 200px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .block:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .block-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #3498db;
+    }
+
+    .block button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Flex layout for buttons */
+    .x {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .x {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .block {
+        width: 90%;
+        margin-bottom: 15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="top_container">
+    {% block header %}
+    <!-- Header Section -->
+    {% include 'header.html' %}
+    {% endblock %}
+
+    <h2>Young Learner</h2>
+    <p>This page is designed to help you analyze coding algorithms in a simple and interactive way. Our goal is to make learning coding logic both fun and easy to understand.</p>
+
+    <div class="container">
+      <!-- Block 1 - Factorial -->
+      <div class="x">
+        <form action="{% url 'calculate_factorial' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">1️⃣</div>
+            <div>Coding Factorial</div>
+          </button>
+        </form>
+
+        <!-- Block 2 - Armstrong -->
+        <form action="{% url 'calculate_armstrong' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">2️⃣</div>
+            <div>Armstrong Number</div>
+          </button>
+        </form>
+
+        <!-- Block 3 - Fibonacci -->
+        <form action="{% url 'Fibonacci' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">3️⃣</div>
+            <div>Fibonacci</div>
+          </button>
+        </form>
+
+        <!-- Block 4 - Prime Number -->
+        <form action="{% url 'calculate_prime' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">4️⃣</div>
+            <div>Prime Number</div>
+          </button>
+        </form>
+      </div>
+
+      <div class="x">
+        <!-- Block 5 - Leap Year -->
+        <form action="{% url 'check_leap_year' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">5️⃣</div>
+            <div>Leap Year</div>
+          </button>
+        </form>
+
+        <!-- Block 6 - Reverse String -->
+        <form action="{% url 'reverse_string' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">6️⃣</div>
+            <div>Reverse String</div>
+          </button>
+        </form>
+
+        <!-- Block 7 - Sorting -->
+        <form action="{% url 'sorting' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">7️⃣</div>
+            <div>Sorting</div>
+          </button>
+        </form>
+      </div>
+
+      <div class="x">
+        <!-- Block 8 - Block Placeholder -->
+        <form action="{% url 'reverse_string' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">8️⃣</div>
+            <div>Block 8</div>
+          </button>
+        </form>
+
+        <!-- Block 9 - Block Placeholder -->
+        <form action="{% url 'reverse_string' %}" method="get">
+          <button type="submit" class="block">
+            <div class="block-icon">9️⃣</div>
+            <div>Block 9</div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% block footer %}
+  <div>
+    {% include 'footer.html' %}
+  </div>
+  {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Armstrong Numbers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .video-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <a href="{% url 'calculate_armstrong' %}" class="btn"><-Back </a>
+        <h1>Understanding Armstrong Numbers</h1>
+    </header>
+    
+    <main>
+        <section class="video-container">
+            <h2>Watch This Video to Understand Armstrong Numbers</h2>
+            <video controls>
+                <source src="https://youtu.be/MgZNEI2JNBI" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    
+        <section class="content-section">
+            <h2>What is an Armstrong Number?</h2>
+            <p>
+                An Armstrong number (also known as a narcissistic number) is a number that is equal to the sum of its own digits each raised to the power of the number of digits. For example:
+            </p>
+            <p><strong>153 = 1³ + 5³ + 3³ = 1 + 125 + 27 = 153</strong></p>
+        </section>
+    
+        <section class="content-section">
+            <h2>How to Check for an Armstrong Number?</h2>
+            <p>
+                To determine if a number is an Armstrong number:
+            </p>
+            <ul>
+                <li>Find the number of digits (n) in the number.</li>
+                <li>Raise each digit to the power of n and sum the results.</li>
+                <li>If the sum equals the original number, it is an Armstrong number.</li>
+            </ul>
+            <p>
+                Here's an example for the number 9474:
+            </p>
+            <ul>
+                <li>9474 = 9⁴ + 4⁴ + 7⁴ + 4⁴ = 6561 + 256 + 2401 + 256 = 9474</li>
+            </ul>
+        </section>
+        <div class="section">
+            <h2>How Armstrong Numbers are Used in Code</h2>
+            <p>
+                In programming, checking for Armstrong numbers often involves the following steps:
+                <br><br>
+                1. *Input*: A user provides a number (n).
+                <br>
+                2. *Digit Extraction*: Break the number into individual digits.
+                <br>
+                3. *Power Calculation*: Raise each digit to the power of the number of digits and calculate their sum.
+                <br>
+                4. *Comparison*: Compare the calculated sum to the original number.
+                <br><br>
+                Armstrong numbers are interesting in mathematical puzzles and coding exercises for beginners.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

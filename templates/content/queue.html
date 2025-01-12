@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Queue Implementation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            color: #3a3a3a;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2d2e2e;
+        }
+        .example {
+            background: #eef;
+            padding: 10px;
+            border-left: 4px solid #447d90;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        iframe {
+            width: 70%;
+            height: 355px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+            border-left: 4px solid #326377;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            color: #3e3d3d;
+        }
+        .queue-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 80%;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            background: #fff;
+            overflow-x: auto;
+        }
+        .queue-element {
+            margin: 0 5px;
+            padding: 10px;
+            background-color: #4cafa8;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .controls button {
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            background-color: #31537a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .controls button:hover {
+            background-color: #418d9a;
+        }
+        .message {
+            margin-top: 10px;
+            color: red;
+            font-size: 1em;
+        }
+        .Visualization {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .controls input, .controls button {
+                width: 90%;
+            }
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right:20px;
+            background-color:rgb(67, 60, 59);
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .back-btn:hover {
+            background-color:rgb(68, 60, 59);
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+    <header>
+        <h1>Learn About Queue Implementation</h1>
+    </header>
+    <div class="container">
+
+        <h1>Watch this video to Understand Queue</h1>    
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/8y2-sMg1cRs" title="Learn About Queue Data Structure"></iframe>
+        </div>
+        <h2>What is a Queue?</h2>
+        <p>A <strong>queue</strong> is a linear data structure that follows the <strong>FIFO</strong> (First In, First Out) principle. The element that is added first is the first to be removed. Think of it like a line at a ticket counter.</p>
+
+        <div class="example">
+            <strong>Example:</strong> Imagine a queue of people at a bus stop. The first person in line is the first to board the bus.
+        </div>
+
+        <h2>How a Queue Works</h2>
+        <p>There are two primary operations:</p>
+        <ul>
+            <li><strong>Enqueue:</strong> Add an element to the rear of the queue.</li>
+            <li><strong>Dequeue:</strong> Remove the front element from the queue.</li>
+        </ul>
+
+        <h2>Queue Implementation in C++</h2>
+        <pre><code>// C++ Code Example
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> q;
+
+    // Enqueue elements
+    q.push(10);
+    q.push(20);
+    q.push(30);
+
+    // Dequeue and display elements
+    while (!q.empty()) {
+        cout << q.front() << " "; // Access the front element
+        q.pop();                  // Remove the front element
+    }
+    return 0;
+}
+</code></pre>
+
+        <h2>Queue Implementation in Java</h2>
+        <pre><code>// Java Code Example
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+
+        // Enqueue elements
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+
+        // Dequeue and display elements
+        while (!queue.isEmpty()) {
+            System.out.println(queue.peek()); // Access the front element
+            queue.poll();                     // Remove the front element
+        }
+    }
+}
+</code></pre>
+
+        <h2>Queue Implementation in Python</h2>
+        <pre><code># Python Code Example
+from collections import deque
+
+queue = deque()
+
+# Enqueue elements
+queue.append(10)
+queue.append(20)
+queue.append(30)
+
+# Dequeue and display elements
+while queue:
+    print(queue[0])  # Access the front element
+    queue.popleft()  # Remove the front element
+</code></pre>
+
+       <section class="Visualization">
+
+<h1>Queue Visualization</h1>
+<div class="queue-container" id="queueContainer"></div>
+
+<div class="controls">
+    <input type="text" id="queueInput" placeholder="Enter value">
+    <button onclick="enqueueToQueue()">Enqueue</button>
+    <button onclick="dequeueFromQueue()">Dequeue</button>
+    <div class="message" id="message"></div>
+</div>
+
+       </section>
+        <script>
+
+    const queueContainer = document.getElementById('queueContainer');
+    const queueInput = document.getElementById('queueInput');
+    const message = document.getElementById('message');
+
+    let queue = [];
+
+    function updateQueueVisualization() {
+        queueContainer.innerHTML = '';
+        queue.forEach(value => {
+            const queueElement = document.createElement('div');
+            queueElement.className = 'queue-element';
+            queueElement.textContent = value;
+            queueContainer.appendChild(queueElement);
+        });
+    }
+
+    function enqueueToQueue() {
+        const value = queueInput.value.trim();
+        if (value === '') {
+            message.textContent = 'Please enter a value to enqueue.';
+            return;
+        }
+        message.textContent = '';
+        queue.push(value);
+        queueInput.value = '';
+        updateQueueVisualization();
+    }
+
+    function dequeueFromQueue() {
+        if (queue.length === 0) {
+            message.textContent = 'Queue is empty. Nothing to dequeue!';
+            return;
+        }
+        message.textContent = '';
+        queue.shift();
+        updateQueueVisualization();
+    }
+
+       </script>
+    </div>
+</body>
+</html>

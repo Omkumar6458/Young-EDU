@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+        .quiz-container {
+            width: 90%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 12px 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .options li:hover {
+            background-color: #e1f5fe;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #3b5998;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #2a5f72;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #4b74a7;
+        }
+        .btn-secondary:hover {
+            background-color: #368f8d;
+        }
+        .result {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        /* Back to Home button style */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'quiz' %}" class="back-btn" id ="back-btn"><-Back </a>
+
+    <div class="quiz-container" id="quiz-container">
+        <div id="quiz-content"></div>
+        <div style="text-align: center;">
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is a linked list?",
+                options: [
+                    "A sequential collection of elements stored in contiguous memory",
+                    "A data structure consisting of nodes, where each node contains data and a pointer to the next node",
+                    "A data structure similar to a stack",
+                    "None of the above"
+                ],
+                answer: 1
+            },
+            {
+                question: "What are the types of linked lists?",
+                options: [
+                    "Singly linked list",
+                    "Doubly linked list",
+                    "Circular linked list",
+                    "All of the above"
+                ],
+                answer: 3
+            },
+            {
+                question: "What is the time complexity to insert a node at the beginning of a singly linked list?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                answer: 0
+            },
+            {
+                question: "How do you traverse a singly linked list?",
+                options: [
+                    "Using a for loop",
+                    "Using a while loop until the current node becomes null",
+                    "Using recursion",
+                    "Both while loop and recursion"
+                ],
+                answer: 3
+            },
+            {
+                question: "What is the main advantage of a linked list over an array?",
+                options: [
+                    "Dynamic size and ease of insertion/deletion",
+                    "Faster traversal",
+                    "Better memory utilization",
+                    "None of the above"
+                ],
+                answer: 0
+            },
+            {
+                question: "What does the tail node of a singly linked list point to?",
+                options: [
+                    "The previous node",
+                    "The next node",
+                    "Null",
+                    "The head node"
+                ],
+                answer: 2
+            },
+            {
+                question: "Which operation is more efficient in a linked list compared to an array?",
+                options: [
+                    "Accessing an element by index",
+                    "Insertion and deletion",
+                    "Sorting",
+                    "None of the above"
+                ],
+                answer: 1
+            },
+            {
+                question: "What is a circular linked list?",
+                options: [
+                    "A linked list where all nodes are connected sequentially",
+                    "A linked list where the last node points back to the first node",
+                    "A linked list where nodes form a tree",
+                    "None of the above"
+                ],
+                answer: 1
+            },
+            {
+                question: "What does a doubly linked list node contain?",
+                options: [
+                    "Only data",
+                    "Data and one pointer",
+                    "Data and two pointers",
+                    "None of the above"
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the time complexity to find an element in a singly linked list?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                answer: 1
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+
+        const quizContent = document.getElementById("quiz-content");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            quizContent.innerHTML = `
+                <div class="question">${index + 1}. ${question.question}</div>
+                <ul class="options">
+                    ${question.options.map((option, i) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+            `;
+            prevBtn.disabled = index === 0;
+            nextBtn.style.display = index === questions.length - 1 ? "none" : "inline-block";
+            submitBtn.style.display = index === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function handleNavigation(offset) {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+
+            currentQuestionIndex += offset;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function calculateScore() {
+            return userAnswers.reduce((score, answer, index) => 
+                answer === questions[index].answer ? score + 1 : score
+            , 0);
+        }
+
+        function showResult() {
+            const score = calculateScore();
+            quizContent.innerHTML = `
+                <div class="result">Your score: ${score}/${questions.length}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            loadQuestion(currentQuestionIndex);
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+        }
+
+        prevBtn.addEventListener("click", () => handleNavigation(-1));
+        nextBtn.addEventListener("click", () => handleNavigation(1));
+        submitBtn.addEventListener("click", showResult);
+
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Statements Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+        .quiz-container {
+            width: 90%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 12px 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .options li:hover {
+            background-color: #e1f5fe;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #3b5998;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #2a5f72;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #4b74a7;
+        }
+        .btn-secondary:hover {
+            background-color: #368f8d;
+        }
+        .result {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        /* Back to Home button style */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'quiz' %}" class="back-btn" id ="back-btn"><-Back</a>
+
+  
+
+    <div class="quiz-container" id="quiz-container">
+        <div id="quiz-content">
+        </div>
+        <div style="text-align: center;">
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the output of this code?\nif (5 > 3) { console.log('Yes'); } else { console.log('No'); }",
+                options: ["Yes", "No", "Error", "Undefined"],
+                answer: 0
+            },
+            {
+                question: "Which statement is true about 'if-else' conditions?",
+                options: [
+                    "'else if' is mandatory.",
+                    "'if' must always have an 'else'.",
+                    "'else if' allows additional condition checks.",
+                    "'if' executes after 'else'."
+                ],
+                answer: 2
+            },
+            {
+                question: "What is the output of this code?\nlet x = 10;\nif (x == '10') { console.log('Equal'); }",
+                options: ["Equal", "Not Equal", "Error", "Undefined"],
+                answer: 0
+            },
+            {
+                question: "What does this code output?\nif (false) { console.log('True'); } else { console.log('False'); }",
+                options: ["True", "False", "Error", "Nothing"],
+                answer: 1
+            },
+            {
+                question: "Which operator can be used to combine two conditions?",
+                options: ["&&", "||", "Both && and ||", "!"],
+                answer: 2
+            },
+            {
+                question: "What is the output of this code?\nlet num = 0;\nif (!num) { console.log('Zero'); }",
+                options: ["Zero", "Nothing", "Error", "Undefined"],
+                answer: 0
+            },
+            {
+                question: "Which keyword is used to stop a loop or switch case?",
+                options: ["exit", "stop", "break", "return"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of the 'default' keyword in a switch statement?",
+                options: [
+                    "It defines the first case to execute.",
+                    "It runs if no case matches.",
+                    "It breaks the switch statement.",
+                    "It throws an error."
+                ],
+                answer: 1
+            },
+            {
+                question: "What is the output of this code?\nlet a = 5;\nif (a > 5) { console.log('Greater'); } else if (a === 5) { console.log('Equal'); }",
+                options: ["Greater", "Equal", "Error", "Nothing"],
+                answer: 1
+            },
+            {
+                question: "Which of the following is valid for an 'if' condition?",
+                options: [
+                    "'if (x = 5)'",
+                    "'if (x == 5)'",
+                    "'if (x === 5)'",
+                    "Both 'if (x == 5)' and 'if (x === 5)'"
+                ],
+                answer: 3
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+
+        const quizContent = document.getElementById("quiz-content");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            quizContent.innerHTML = `
+                <div class="question">${index + 1}. ${question.question}</div>
+                <ul class="options">
+                    ${question.options.map((option, i) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+            `;
+            prevBtn.disabled = index === 0;
+            nextBtn.style.display = index === questions.length - 1 ? "none" : "inline-block";
+            submitBtn.style.display = index === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function handleNavigation(offset) {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+
+            currentQuestionIndex += offset;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function calculateScore() {
+            return userAnswers.reduce((score, answer, index) => 
+                answer === questions[index].answer ? score + 1 : score
+            , 0);
+        }
+
+        function showResult() {
+            const score = calculateScore();
+            quizContent.innerHTML = `
+                <div class="result">Your score: ${score}/${questions.length}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            loadQuestion(currentQuestionIndex);
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+        }
+
+        // Back to Home button functionality
+        document.getElementById("back-btn").addEventListener("click", function() {
+            window.location.href = "/"; // Redirect to home page
+        });
+
+        prevBtn.addEventListener("click", () => handleNavigation(-1));
+        nextBtn.addEventListener("click", () => handleNavigation(1));
+        submitBtn.addEventListener("click", showResult);
+
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

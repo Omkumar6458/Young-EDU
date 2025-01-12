@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Fibonacci Series</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        header {
+            color: rgb(71, 71, 71);
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+        main {
+            padding: 1rem;
+            max-width: 800px;
+        }
+        .section {
+            margin: 1rem 0;
+        }
+        .section h2 {
+            color: #474847;
+        }
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        .example {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background-color: #e8f5e9;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .example label {
+            font-weight: bold;
+        }
+        .example input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .example button {
+            background-color: #283e5b;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .example button:hover {
+            background-color: #458ea0;
+        }
+        .result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Learn About Fibonacci Series</h1>
+    </header>
+    <main>
+        <section class="section">
+            <h2>Watch this Video to Understand Fibonacci Series</h2>
+            <iframe src="https://www.youtube.com/embed/your_fibonacci_video_id" title="Fibonacci Series Explanation"></iframe>
+        </section>
+
+        <section class="section">
+            <h2>What is the Fibonacci Series?</h2>
+            <p>The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones, starting from 0 and 1. The sequence goes like this: 0, 1, 1, 2, 3, 5, 8, 13, and so on.</p>
+        </section>
+
+        
+        <section class="section">
+            <h2> Example</h2>
+            <div class="example">
+                <label for="num">Enter a number:</label>
+                <input type="number" id="num" placeholder="e.g., 10">
+                <button onclick="generateFibonacci()">Generate Fibonacci Series</button>
+                <div class="result" id="result"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How it Works</h2>
+            <p>Each term in the series is calculated as:</p>
+            <ul>
+                <li>F(n) = F(n-1) + F(n-2)</li>
+                <li>Where F(0) = 0 and F(1) = 1</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function generateFibonacci() {
+            const num = parseInt(document.getElementById('num').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(num) || num < 0) {
+                resultDiv.textContent = "Please enter a valid positive number.";
+                return;
+            }
+
+            const fibonacci = [0, 1];
+            for (let i = 2; i < num; i++) {
+                fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+            }
+
+            resultDiv.textContent = `Fibonacci series: ${fibonacci.slice(0, num).join(', ')}`;
+        }
+    </script>
+</body>
+</html>

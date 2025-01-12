@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: #f4f7f6;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 18px;
+            background-color: #2a5f72;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background-color: #368f8d;
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 650px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 70px;
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .options li {
+            margin: 12px 0;
+        }
+
+        .options label {
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #2a5f72;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #355d7f;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #368f8d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #368f8d;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result button {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            background-color: #2a5f72;
+            color: white;
+            cursor: pointer;
+        }
+
+        .result button:hover {
+            background-color: #368f8d;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'quiz' %}" class="back-btn" id ="back-btn"><-Back</a>
+
+  
+
+    <div class="quiz-container" id="quiz-container">
+        <div id="quiz-content">
+            <!-- Dynamic Content -->
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "In C, how do you declare an integer variable?",
+                options: ["int x;", "integer x;", "x: int", "var x: int;"],
+                answer: 0
+            },
+            {
+                question: "Which of these is a valid variable declaration in C++?",
+                options: ["let x = 10;", "int x = 10;", "x = 10;", "declare int x;"],
+                answer: 1
+            },
+            {
+                question: "In Java, variables are:",
+                options: ["Declared with var", "Type-safe and strongly typed", "Dynamically typed", "Implicitly declared"],
+                answer: 1
+            },
+            {
+                question: "Which of the following is the correct way to declare a variable in Python?",
+                options: ["var x = 10;", "x = 10", "int x = 10;", "declare x = 10;"],
+                answer: 1
+            },
+            {
+                question: "In JavaScript, which keyword is used to declare a variable?",
+                options: ["var", "let", "const", "All of the above"],
+                answer: 3
+            },
+            {
+                question: "Which of these is NOT a valid variable name in Java?",
+                options: ["_myVariable", "2ndVariable", "my_variable", "variable2"],
+                answer: 1
+            },
+            {
+                question: "Which of the following is true about variables in Python?",
+                options: [
+                    "They must be declared with a type",
+                    "They are case-sensitive",
+                    "Their type cannot change once assigned",
+                    "They cannot hold None as a value"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which of these is a reserved keyword in JavaScript?",
+                options: ["let", "variable", "define", "varName"],
+                answer: 0
+            },
+            {
+                question: "What is the default value of an uninitialized variable in Java?",
+                options: ["null", "0", "undefined", "It depends on the data type"],
+                answer: 3
+            },
+            {
+                question: "In C++, which is a valid constant variable declaration?",
+                options: ["int const x = 10;", "constant x = 10;", "const int x = 10;", "Both 1 and 3"],
+                answer: 3
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+
+        const quizContent = document.getElementById("quiz-content");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            quizContent.innerHTML = `
+                <div class="question">${index + 1}. ${question.question}</div>
+                <ul class="options">
+                    ${question.options.map((option, i) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+            `;
+
+            prevBtn.disabled = index === 0;
+            nextBtn.style.display = index === questions.length - 1 ? "none" : "inline-block";
+            submitBtn.style.display = index === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function handleNavigation(offset) {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+
+            currentQuestionIndex += offset;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function calculateScore() {
+            return userAnswers.reduce((score, answer, index) => 
+                answer === questions[index].answer ? score + 1 : score
+            , 0);
+        }
+
+        function showResult() {
+            const score = calculateScore();
+            quizContent.innerHTML = `
+                <div class="result">Your score: ${score}/${questions.length}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            loadQuestion(currentQuestionIndex);
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+        }
+
+        function goHome() {
+            alert('Going to home page...');
+            // Implement home navigation logic here (e.g., redirect or show home content)
+        }
+
+        prevBtn.addEventListener("click", () => handleNavigation(-1));
+        nextBtn.addEventListener("click", () => handleNavigation(1));
+        submitBtn.addEventListener("click", showResult);
+
+        loadQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

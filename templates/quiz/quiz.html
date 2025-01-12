@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Topics</title>
+    <script src="{% static 'js/quiz.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/s.css' %}">
+    
+<style>
+
+    .back-btn {
+        position: absolute;
+        top: 10px;
+        right:20px;
+        background-color:rgb(67, 60, 59);
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background-color:rgb(68, 60, 59);
+    }
+    <style>
+        /* Remove underline and set a colorful text */
+        a {
+            text-decoration: none; /* Removes underline */
+            color: #ff6347;        /* Sets a colorful text (Tomato) */
+            font-weight: bold;     /* Optional: Makes the text bold */
+        }
+
+        /* Add hover effect for interaction */
+        a:hover {
+            color: #32cd32; /* Changes color on hover (Lime Green) */
+        }
+    </style>
+</style>
+</head>
+
+<body>
+    <a href="{% url 'home' %}" class="back-btn" id ="back-btn"><B> Home </b></a>
+    <div class="menu-bar">
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+   
+    </div>
+    
+    <div  class="sidebar" id="sidebar">
+<h1 class="heading">Topic</h1>
+<div class="topic">
+    <h3 onclick="toggleSubtopics('basic')">Basic</h3>
+    <ul id="basic" class="subtopics">
+        
+        <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'intro' %}">Intro to coding</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'basic' %}">Basic Commands</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'var' %}">Variable</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'loop' %}">Loop</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'cond' %}">Condition</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'func' %}">Function</a></li>
+        <li ><a style="text-decoration: none; color: aliceblue;" href="{% url 'syntax' %}">Syntax</a></li>
+
+    </ul>
+</div>
+
+
+
+        <div class="topic">
+            <h3 onclick="toggleSubtopics('math')">Programming</h3>
+            <ul id="math" class="subtopics">
+            
+                <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'c' %}">C language</a> </li>
+                <li> <a style="text-decoration: none; color: aliceblue;" href="{% url 'cdd' %}"> C++ language</a> </li>
+                <li> <a style="text-decoration: none;color: aliceblue;" href="{% url 'java' %}">Java </a> </li>
+               <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'javascript' %}">java Script</a> </li>
+
+            </ul>
+        </div>
+        <div class="topic">
+            <h3 onclick="toggleSubtopics('dataStructure')">Data Structure</h3>
+            <ul id="dataStructure" class="subtopics">
+
+             
+
+              <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'array' %}">Array</a> </li>
+               <li> <a style="text-decoration: none; color: aliceblue;" href="{% url 'linkedList' %}">LinkedList</a> </li>
+               <li> <a style="text-decoration: none;color: aliceblue;" href="{% url 'stack' %}">Stack</a> </li>
+              <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'Queue' %}">Queue</a> </li>
+         
+              <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'Tree' %}">Tree</a>  </li>
+
+              <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'Graph' %}">Graph</a> </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="content" id="content">
+    <div class="contentContainer">
+        <h1 style="color: light yellow;">Test your mind !</h1>
+        <p>.............................*.............................</p>
+        <img src="{% static 'images/DALL·E 2025-01-09 01.46.27 - An animated illustration depicting the concept of factorial calculation. The image shows a cascading visual of numbers multiplying sequentially, start.webp' %}" class="contentimg" style="width: 910px; height: 500px;">
+    </div>
+
+</div>
+
+
+      
+</div>
+
+</body>
+</html>

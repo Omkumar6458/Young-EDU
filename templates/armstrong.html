@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arm Strong Number</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+        color: #333;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 25px;
+        color: #555;
+        font-size: 1.8em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      input[type="text"] {
+        width: calc(100% - 24px);
+        padding: 12px;
+        margin: 20px 0 15px 0;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input[type="text"]:focus {
+        border: 2px solid #007BFF;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        outline: none;
+      }
+
+      button {
+        width: 60%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #007BFF, #00c6ff);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      button:hover {
+        background: linear-gradient(90deg, #0056b3, #0092cc);
+        transform: scale(1.05);
+      }
+
+      .about-section {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* Fixed Button Styles */
+      .learn-more-home {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s;
+      }
+
+      .learn-more-home:hover {
+        background-color:linear-gradient(120deg,rgb(171, 197, 239), #c2e9fb);
+        transform: scale(1.05);
+      }
+      .learn-more-Back {
+        position: fixed;
+        top: 54px;
+        left: 370px;
+        padding: 10px 20px;
+       background:lightblue
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 3s ease, transform 0.2s;
+      }
+
+      .learn-more-Back:hover {
+        background-color:rgb(159, 193, 230);
+        transform: scale(1.05);
+      }
+
+
+
+
+      .learn-more-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s;
+      }
+
+      .learn-more-btn:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+      }
+
+
+
+
+
+    </style>
+</head>
+<body>
+  <a href="{% url 'home' %}" class="learn-more-home">Home</a>
+  <a href="{% url 'introduction' %}" class="learn-more-Back"><-Back </a>
+  <div class="container">
+    <h1>Arm Strong</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="input_value">Enter a number:</label>
+      <input type="text" id="input_value" name="input_value" required>
+      <br>
+      <button type="submit">Check</button>
+    </form>
+    {% if result %}
+      <h2>Result:</h2>
+      <p>{{ result }}</p>
+    {% endif %}
+  </div>
+
+  <a href="{% url 'armpage' %}" class="learn-more-btn">Learn More</a>
+</body>
+</html>

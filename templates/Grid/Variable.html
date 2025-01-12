@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Variables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            color: rgb(63, 62, 62);
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container1 {
+            padding: 20px;
+            display: flex;
+justify-content: space-between;
+gap: 200px;
+        }
+        .container2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .video-container {
+            width:50%;
+            text-align: center;
+            margin: 20px 0;
+        }
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 315px;
+        }
+         .variable-example {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .variable-example input {
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+        .section2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+       
+        }
+     
+        .variable-example button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin: 25px 0;
+            font-size: 1rem;
+       
+        }
+        .variable-example button:hover {
+            background-color: #45a049;
+        }
+        #codeExample{
+            width: 400;
+           max-width: 500px;
+            background-color: #ddd;
+            border-radius: 5px;
+            padding: 15px 15px;
+            display: none;
+        }
+        #quiz-container{
+            width: 600px;
+            background-color: #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 30px;
+        }
+        .question {
+            font-size: 20px;
+        }
+        .options {
+            margin: 20px 0;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        #score {
+            display: none;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+   
+        #navigation-buttons {
+            margin-top: 20px;
+        }
+    
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Understand Variables</h1>
+    </header>
+
+    <div class="container1">
+        <section class="video-container">
+            <h2>Watch this Video to Understand variable</h2>
+            <iframe src="variable.png" title="Variable Explanation Video" frameborder="0" allowfullscreen></iframe>
+        </section>
+
+        <section class="text">
+            <h2>What is a Variable?</h2>
+            <p>A variable is like a box that can hold information. You can name the box and store things in it, like numbers, words, or even more complex data.
+ Think of it as a box where you can put information, label the box, and use it whenever needed.</p>
+
+       
+
+
+
+        <section class="variable-example">
+            <h2>example</h2>
+            <label for="variableInput">Enter a value for the variable:</label>
+            <input type="text" id="variableInput" placeholder="Type something here...">
+            <button onclick="showVariableOutput()">Submit</button>
+            <p id="output"></p>
+        </section>
+               
+ 
+    </section>
+    </div>
+
+    <div class="container2"> 
+        <div class="section1">
+            <h2>Why Use Variables?</h2>
+                    <p>Variables make it easy to store and reuse information in your program. Instead of repeating values, you can use a variable to store them once and refer to them whenever needed.</p>
+            
+           
+                        <h2>Types of Variables</h2>
+                        <p>Variables can store different types of data, depending on the programming language:</p>
+                        <ul>
+                            <li><strong>Integer:</strong> Stores whole numbers (e.g., <code>42</code>).</li>
+                            <li><strong>Float/Double:</strong> Stores decimal numbers (e.g., <code>3.14</code>).</li>
+                            <li><strong>String:</strong> Stores text (e.g., <code>"Hello, World!"</code>).</li>
+                            <li><strong>Boolean:</strong> Stores true or false values (e.g., <code>true</code>, <code>false</code>).</li>
+                            <li><strong>Others:</strong> Includes arrays, objects, etc., depending on the language.</li>
+                        </ul>
+           
+                                 <h2>Rules for Naming Variables</h2>
+                    <ul>
+                        <li>Variable names must start with a letter, an underscore <code>_</code>, or a dollar sign <code>$</code> (in JavaScript).</li>
+                        <li>Variable names cannot contain spaces.</li>
+                        <li>Variable names are case-sensitive, so <code>age</code> and <code>Age</code> are different.</li>
+                    </ul>
+           
+                    </div>
+<div class="section2">
+        <h2>How to Declare a Variable?</h2>
+        <p>Here are examples of how to declare variables in different programming languages:</p>
+    <section class="example">
+     <label for="language">Select Language: </label>
+     <select id="language">
+         <option value="c">C</option>
+         <option value="cpp">C++</option>
+         <option value="java">Java</option>
+         <option value="javascript">JavaScript</option>
+         <option value="python">Python</option>
+     </select>
+ </section>
+     <button onclick="showExample()">Show Variable Example</button>
+ 
+     <pre id="codeExample"></pre>
+    </div>
+
+    <div id="quiz-container">
+        <h1> check your knowledge</h1>
+        <div id="question-container">
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
+
+        <div id="navigation-buttons">
+
+            <button class="button" id="previous-button" onclick="previousQuestion()" style="display: none;">Previous</button>
+            <button class="button" id="next-button" onclick="nextQuestion()">Next</button>
+            <button class="button" id="submit-button" onclick="submitQuiz()" style="display: none;">Submit</button>
+        </div>
+
+        <div id="score">
+            <p>Your score: <span id="score-value"></span> / 15</p>
+        </div>
+    </div>
+
+    </div>
+   
+
+    <script>
+        const questions = [
+            {
+                question: " 1.What is a variable in programming?",
+                options: [
+                    "A) A storage location that holds a value which can change during program execution",
+                    "B) A fixed value used in a program",
+                    "C) A function that performs calculations",
+                    "D) A predefined constant value"
+                ],
+                answer: "A"
+            },
+            {
+                question: "2.Which of the following is NOT a basic type of variable?",
+                options: [
+                    "A) Integer",
+                    "B) Float",
+                    "C) Function",
+                    "D) String"
+                ],
+                answer: "C"
+            },
+            {
+                question: " 3.Which of the following is the correct rule for naming variables?",
+                options: [
+                    "A) A variable name must start with a digit.",
+                    "B) A variable name must start with a letter or an underscore.",
+                    "C) A variable name can only contain numbers.",
+                    "D) A variable name cannot contain underscores."
+                ],
+                answer: "B"
+            },
+            {
+                question: " 4.In C/C++, which of the following is used to define a variable of type int?",
+                options: [
+                    "A) int x;",
+                    "B) var x;",
+                    "C) let x;",
+                    "D) x = int;"
+                ],
+                answer: "A"
+            },
+            {
+                question: "5.In Python, which of the following is the correct way to define a variable?",
+                options: [
+                    "A) int x = 10",
+                    "B) x = 10",
+                    "C) var x = 10",
+                    "D) let x = 10"
+                ],
+                answer: "B"
+            },
+            {
+                question: " 6.Which of the following keywords is used to define a variable in Java?",
+                options: [
+                    "A) let",
+                    "B) var",
+                    "C) int",
+                    "D) define"
+                ],
+                answer: "C"
+            },
+            {
+                question: " 7.In JavaScript, which keyword is used to declare a variable with block scope?",
+                options: [
+                    "A) let",
+                    "B) var",
+                    "C) const",
+                    "D) define"
+                ],
+                answer: "A"
+            },
+            {
+                question: "8.Which of the following is the correct rule for naming variables in Java?",
+                options: [
+                    "A) Variable names can include spaces.",
+                    "B) Variable names must start with a number.",
+                    "C) Variable names are case-sensitive.",
+                    "D) Variable names cannot be more than 5 characters long."
+                ],
+                answer: "C"
+            },
+            {
+                question: " 9.In C/C++, which of the following is the correct way to declare a constant variable?",
+                options: [
+                    "A) const int x = 10;",
+                    "B) constant int x = 10;",
+                    "C) final int x = 10;",
+                    "D) let const x = 10;"
+                ],
+                answer: "A"
+            },
+            {
+                question: "10.Which of the following data types is used to store decimal values in C/C++?",
+                options: [
+                    "A) float",
+                    "B) int",
+                    "C) string",
+                    "D) char"
+                ],
+                answer: "A"
+            },
+            {
+                question: "11.In Python, which of the following is the correct way to define a string variable?",
+                options: [
+                    "A) var string = 'Hello';",
+                    "B) string x = 'Hello';",
+                    "C) x = 'Hello'",
+                    "D) let x = 'Hello';"
+                ],
+                answer: "C"
+            },
+            {
+                question: "12.Which of the following is the correct way to declare a variable in JavaScript that cannot be reassigned?",
+                options: [
+                    "A) var x = 5;",
+                    "B) let x = 5;",
+                    "C) const x = 5;",
+                    "D) define x = 5;"
+                ],
+                answer: "C"
+            },
+            {
+                question: "13.In C++, what will happen if you try to assign a value to a constant variable after initialization?",
+                options: [
+                    "A) Compilation will fail with an error.",
+                    "B) The program will run, but the value will not be updated.",
+                    "C) The value will be updated successfully.",
+                    "D) It will throw a runtime error."
+                ],
+                answer: "A"
+            },
+            {
+                question: "14.In Python, which of the following is used to define a variable that holds a boolean value?",
+                options: [
+                    "A) True or False",
+                    "B) bool",
+                    "C) boolean",
+                    "D) int"
+                ],
+                answer: "A"
+            },
+            {
+                question: " 15 .In Java, which of the following statements is true about variable initialization?",
+                options: [
+                    "A) A variable in Java can be used without initialization.",
+                    "B) A variable must always be initialized before it is used.",
+                    "C) Java automatically assigns a default value to variables.",
+                    "D) Variables must be initialized with a value of type null."
+                ],
+                answer: "B"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answers = Array(questions.length).fill(null);
+
+        function loadQuestion() {
+            const questionObj = questions[currentQuestionIndex];
+            document.getElementById("question").textContent = questionObj.question;
+            let optionsHtml = "";
+            questionObj.options.forEach((option, index) => {
+                optionsHtml += <label><input type="radio" name="question" value="${option[0]}" onclick="saveAnswer('${option[0]}')"> ${option}</label><br>;
+            });
+            document.getElementById("options").innerHTML = optionsHtml;
+            updateNavigationButtons();
+        }
+
+        function saveAnswer(selectedOption) {
+            answers[currentQuestionIndex] = selectedOption;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function previousQuestion() {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById("previous-button").style.display = currentQuestionIndex === 0 ? "none" : "inline-block";
+            document.getElementById("next-button").style.display = currentQuestionIndex === questions.length - 1 ? "none" : "inline-block";
+            document.getElementById("submit-button").style.display = currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function submitQuiz() {
+            score = answers.reduce((total, answer, index) => answer === questions[index].answer ? total + 1 : total, 0);
+            // document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("score-value").textContent = score;
+            document.getElementById("score").style.display = "block";
+
+        }
+
+        loadQuestion();
+
+        function showExample() {
+             const language = document.getElementById('language').value;
+             let exampleCode = '';
+ 
+             switch (language) {
+                 case 'c':
+                     exampleCode = `
+ #include <stdio.h>
+ 
+ int main() {
+     int number = 10;  
+     // Variable declaration and initialization
+     printf("Value of number: %d", number);
+     return 0;
+ }
+                     `;
+                     break;
+                 case 'cpp':
+                     exampleCode = `
+ #include <iostream>
+ using namespace std;
+ 
+ int main() {
+     int number = 10;  
+     // Variable declaration and initialization
+     cout << "Value of number: " << number << endl;
+     return 0;
+ }
+                     `;
+                     break;
+                 case 'java':
+                     exampleCode = `
+ public class Main {
+     public static void main(String[] args) {
+         int number = 10;  
+         // Variable declaration and initialization
+         System.out.println("Value of number: " + number);
+     }
+ }
+                     `;
+                     break;
+                 case 'javascript':
+                     exampleCode = `
+ let number = 10; 
+  // Variable declaration and initialization
+ console.log("Value of number:", number);
+                     `;
+                     break;
+                 case 'python':
+                     exampleCode = `
+ number = 10 
+  # Variable declaration and initialization
+ print("Value of number:", number)
+                     `;
+                     break;
+                 default:
+                     exampleCode = 'Select a programming language.';
+             }
+ 
+             document.getElementById('codeExample').textContent = exampleCode;
+             document.getElementById('codeExample').style.display="inline";
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learning Functions in Programming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            color: rgb(67, 67, 67);
+            text-align: center;
+            padding: 1em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .video-container {
+            text-align: center;
+        }
+        iframe {
+            width: 70%;
+            height: 355px;
+            border: none;
+            border-radius: 8px;
+        }
+        .example-code {
+            background-color: #eaeaea;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: auto;
+        }
+        .interactive-section {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .interactive-section input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .interactive-section button {
+            padding: 10px 20px;
+            background-color: #264262;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .interactive-section button:hover {
+            background-color: #3e919f;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color:rgb(60, 183, 231);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color:rgb(43, 150, 192);
+            transform: scale(1.05);
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+
+<header>
+    <h1>Learn About Functions</h1>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Watch this video to understand Fuction</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/3h7E8iXqZ4E" title="Learn Functions in Programming Languages"></iframe>
+        </div>
+    </section>
+    <section>
+        <h2>What is a Function?</h2>
+        <p>A function is a block of reusable code that performs a specific task. Functions allow you to organize your code into smaller, manageable chunks. You can call a function whenever you need it, making your code more efficient and easier to read.</p>
+    </section>
+
+    <section class="row">
+        <div class="column">
+            <h2>Interactive Function Example: Add Two Numbers</h2>
+            <p>Try using the interactive tool below to experiment with adding two numbers together using a function.</p>
+            <div class="interactive-section">
+                <label for="num1">Enter first number:</label>
+                <input type="number" id="num1" placeholder="First number">
+                <label for="num2">Enter second number:</label>
+                <input type="number" id="num2" placeholder="Second number">
+                <button onclick="addNumbers()">Add</button>
+                <div class="result" id="result"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Functions in C</h2>
+        <p>In C, a function is declared with a return type, function name, and parameters (optional). The function performs a task and can return a value.</p>
+        <div class="example-code">
+            <p><b>Example:</b></p>
+            <pre>
+#include <stdio.h>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 4);
+    printf("The sum is: %d", result);
+    return 0;
+}
+            </pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Functions in C++</h2>
+        <p>C++ functions are similar to C but allow for more advanced features like function overloading. Functions in C++ are declared similarly to C functions.</p>
+        <div class="example-code">
+            <p><b>Example:</b></p>
+            <pre>
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 4);
+    cout << "The sum is: " << result << endl;
+    return 0;
+}
+            </pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Functions in JavaScript</h2>
+        <p>In JavaScript, functions can be declared in various ways, including function expressions, arrow functions, and function declarations.</p>
+        <div class="example-code">
+            <p><b>Example:</b></p>
+            <pre>
+function add(a, b) {
+    return a + b;
+}
+
+let result = add(3, 4);
+console.log("The sum is: " + result);
+            </pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Functions in Python</h2>
+        <p>Python functions are simple to declare and don't require a return type. Functions in Python can return values, take parameters, and have default values for arguments.</p>
+        <div class="example-code">
+            <p><b>Example:</b></p>
+            <pre>
+def add(a, b):
+    return a + b
+
+result = add(3, 4)
+print("The sum is:", result)
+            </pre>
+        </div>
+    </section>
+
+   
+</div>
+
+
+<script>
+    function addNumbers() {
+        var num1 = parseFloat(document.getElementById('num1').value);
+        var num2 = parseFloat(document.getElementById('num2').value);
+        if (!isNaN(num1) && !isNaN(num2)) {
+            var sum = num1 + num2;
+            document.getElementById('result').innerHTML = "The sum is: " + sum;
+        } else {
+            document.getElementById('result').innerHTML = "Please enter valid numbers.";
+        }
+    }
+</script>
+
+</body>
+</html>

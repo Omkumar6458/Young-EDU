@@ -1,0 +1,46 @@
+
+{% load static %}
+<footer style="background-color: #007bff; color: white; padding: 20px 0;">
+  <div class="container">
+    <div class="row">
+      <!-- About Section -->
+      <div class="col-md-4">
+        <h4>About Young Learner</h4>
+        <p>
+          Young Learner is dedicated to providing interactive and intuitive coding tutorials for young minds. Learn, explore, and grow with us!
+        </p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="col-md-4">
+        <h4>Quick Links</h4>
+        <ul style="list-style-type: none; padding: 0;">
+          <li><a href="#about" style="color: white; text-decoration: none;">About Us</a></li>
+          <li><a href="#tutorials" style="color: white; text-decoration: none;">Tutorials</a></li>
+          <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
+          <li><a href="#faq" style="color: white; text-decoration: none;">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact and Social Media -->
+      <div class="col-md-4">
+        <h4>Contact Us</h4>
+        <p>Email: contact@younglearner.com</p>
+        <p>Phone: +123 456 7890</p>
+        <div>
+          <a href="https://facebook.com" style="color: white; margin-right: 10px;"><i class="fa fa-facebook"></i></a>
+          <a href="https://twitter.com" style="color: white; margin-right: 10px;"><i class="fa fa-twitter"></i></a>
+          <a href="https://instagram.com" style="color: white; margin-right: 10px;"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright Section -->
+    <div class="row mt-4">
+      <div class="col text-center">
+        <p>&copy; {{ year|default:2025 }} Young Learner. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+

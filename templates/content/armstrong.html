@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Understanding Armstrong Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            color: rgb(65, 64, 64);
+            padding: 20px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .content-container {
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        video {
+            height: 355px;
+            width: 70%;
+            display: block;
+            margin: 20px 0;
+        }
+        .example {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .input-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .input-container input {
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-container button {
+            padding: 10px 20px;
+            background-color: #294269;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #458ca0;
+        }
+       </style>
+</head>
+<body>
+
+<header>
+    <h1>Learn About Armstrong Numbers</h1>
+</header>
+
+<main>
+    <div class="content-container">
+        <h3>Watch this Video to Understand Armstrong Number:</h3>
+        <video controls>
+            <source src="https://www.example.com/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>What is an Armstrong Number?</h2>
+        <p>An Armstrong number (also known as a narcissistic number) is a number that is equal to the sum of its own digits each raised to the power of the number of digits.</p>
+        
+        <h3>Example:</h3>
+        <div class="example">
+            <p>Let’s take the number <strong>153</strong>.</p>
+            <p>153 has 3 digits. So, we raise each digit to the power of 3:</p>
+            <ul>
+                <li>1<sup>3</sup> = 1</li>
+                <li>5<sup>3</sup> = 125</li>
+                <li>3<sup>3</sup> = 27</li>
+            </ul>
+            <p>Now, add them together: <strong>1 + 125 + 27 = 153</strong>. Since the sum is equal to the original number, <strong>153</strong> is an Armstrong number.</p>
+        </div>
+
+        
+        <h3>Check If a Number is an Armstrong Number:</h3>
+        <div class="input-container">
+            <p>Enter a number to check if it’s an Armstrong number:</p>
+            <input type="number" id="numberInput" placeholder="Enter a number">
+            <button onclick="checkArmstrongNumber()">Check</button>
+            <p id="result"></p>
+        </div>
+    </div>
+</main>
+<script>
+    function checkArmstrongNumber() {
+        const num = document.getElementById("numberInput").value;
+        const numStr = num.toString();
+        const numLength = numStr.length;
+        let sum = 0;
+
+        for (let i = 0; i < numLength; i++) {
+            sum += Math.pow(parseInt(numStr[i]), numLength);
+        }
+
+        const result = document.getElementById("result");
+        if (sum === parseInt(num)) {
+            result.textContent = num + " is an Armstrong number!";
+            result.style.color = "green";
+        } else {
+            result.textContent = num + " is not an Armstrong number.";
+            result.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>

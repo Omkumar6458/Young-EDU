@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understand Palindrome Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            padding: 20px;
+            color: rgb(74, 73, 73);
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            font-size: 15px;
+            padding: 1rem;
+        width: 80%;
+            margin: auto;
+        }
+        .video-container {
+            color: rgb(72, 71, 71);
+            font-size: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .interactive-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .interactive-section input {
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+        }
+        .interactive-section button {
+            padding: 0.5rem;
+            background-color: #202d52;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .interactive-section button:hover {
+            background-color: #459ba0;
+        }
+        .result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Learn About Palindrome Numbers</h1>
+    </header>
+    <div class="container">
+
+        <div class="video-container">
+            <h3>Watch this video to Understand Palindrome Number</h3>
+            <iframe width="760" height="355" src="https://www.youtube.com/embed/YOUR_VIDEO_LINK" title="Palindrome Numbers" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <section>
+            <h2>What is a Palindrome Number?</h2>
+            <p>A palindrome number is a number that reads the same backward as forward. For example, 121, 545, and 12321 are palindrome numbers.</p>
+        </section>
+        
+       
+        <section class="example">
+            <h3>Example:</h3>
+            <p><strong>Step-by-step process:</strong></p>
+            <ol>
+                <li>Take a number: <strong>121</strong></li>
+                <li>Reverse it: <strong>121</strong></li>
+                <li>Compare: Original = Reversed</li>
+                <li>If they are the same, it is a palindrome.</li>
+            </ol>
+        </section>
+
+        <section class="interactive-section">
+            <h3>Try It Yourself!</h3>
+            <p>Enter a number to check if it is a palindrome:</p>
+            <input type="number" id="numberInput" placeholder="Enter a number">
+            <button onclick="checkPalindrome()">Check</button>
+            <div class="result" id="result"></div>
+        </section>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            const number = document.getElementById('numberInput').value;
+            if (number === '') {
+                document.getElementById('result').textContent = 'Please enter a number.';
+                return;
+            }
+            const reversed = number.split('').reverse().join('');
+            if (number === reversed) {
+                document.getElementById('result').textContent = `${number} is a palindrome!`;
+            } else {
+                document.getElementById('result').textContent = `${number} is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .quiz-container {
+            width: 90%;
+            max-width: 700px;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+        .options li {
+            margin: 12px 0;
+        }
+        .options label {
+            display: block;
+            padding: 10px;
+            background-color: #f4f7fb;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .options input[type="radio"]:checked + label {
+            background-color: #2a5f72;
+            color: white;
+        }
+        .options label:hover {
+            background-color: #e0e8f0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #2a5f72;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #368f8d;
+        }
+        .btn-secondary {
+            background-color: #ccc;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #b2b2b2;
+        }
+        .back-btn {
+            background-color: #FF6347;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #ff2d00;
+        }
+        .result {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            z-index: 10;
+        }
+        .back-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'quiz' %}" class="back-btn" id ="back-btn"><-Back</a>
+    <div class="quiz-container" id="quiz-container">
+    
+        <div id="quiz-content">
+            <!-- Dynamic Content -->
+        </div>
+        <div>
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which of the following is a programming language?",
+                options: ["HTML", "CSS", "Python", "MySQL"],
+                answer: 2
+            },
+            {
+                question: "What does HTML stand for?",
+                options: ["Hypertext Markup Language", "HighText Machine Language", "Hyperlink and Text Markup Language", "None of the above"],
+                answer: 0
+            },
+            {
+                question: "Which programming language is known as the backbone of web development?",
+                options: ["JavaScript", "Python", "C++", "Ruby"],
+                answer: 0
+            },
+            {
+                question: "Which type of programming language is JavaScript?",
+                options: ["Markup language", "Scripting language", "Assembly language", "Machine language"],
+                answer: 1
+            },
+            {
+                question: "Which of these is a low-level programming language?",
+                options: ["Python", "Assembly language", "Java", "HTML"],
+                answer: 1
+            },
+            {
+                question: "What is the use of SQL?",
+                options: ["Styling web pages", "Creating databases", "Managing databases", "Both creating and managing databases"],
+                answer: 3
+            },
+            {
+                question: "Which programming language is mainly used for Data Science?",
+                options: ["Python", "C++", "Java", "Swift"],
+                answer: 0
+            },
+            {
+                question: "Which programming paradigm focuses on objects?",
+                options: ["Procedural programming", "Object-oriented programming", "Functional programming", "Logical programming"],
+                answer: 1
+            },
+            {
+                question: "Which language is primarily used for iOS app development?",
+                options: ["Swift", "Kotlin", "Java", "C#"],
+                answer: 0
+            },
+            {
+                question: "Which of the following is NOT a programming language?",
+                options: ["Ruby", "PHP", "HTML", "C#"],
+                answer: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+
+        const quizContent = document.getElementById("quiz-content");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            quizContent.innerHTML = `
+                <div class="question">${index + 1}. ${question.question}</div>
+                <ul class="options">
+                    ${question.options.map((option, i) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+            `;
+
+            prevBtn.disabled = index === 0;
+            nextBtn.style.display = index === questions.length - 1 ? "none" : "inline-block";
+            submitBtn.style.display = index === questions.length - 1 ? "inline-block" : "none";
+        }
+
+        function handleNavigation(offset) {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+
+            currentQuestionIndex += offset;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function calculateScore() {
+            return userAnswers.reduce((score, answer, index) => 
+                answer === questions[index].answer ? score + 1 : score
+            , 0);
+        }
+
+        function showResult() {
+            const score = calculateScore();
+            quizContent.innerHTML = `
+                <div class="result">Your score: ${score}/${questions.length}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            loadQuestion(currentQuestionIndex);
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+        }
+
+        prevBtn.addEventListener("click", () => handleNavigation(-1));
+        nextBtn.addEventListener("click", () => handleNavigation(1));
+        submitBtn.addEventListener("click", showResult);
+        loadQuestion(currentQuestionIndex);
+        
+    </script>
+</body>
+</html>

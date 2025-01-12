@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Variables</title>
+    <link rel="stylesheet" href="{% static 'css/variable.css' %}">
+    <script src="{% static 'js/variable.js' %}"></script>
+   </head>
+<style>
+   .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color:rgb(60, 180, 231);
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-btn:hover {
+    background-color:rgb(43, 140, 192);
+    transform: scale(1.05);
+}
+</style>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+    <header>
+        <h1>Understand Variables</h1>
+    </header>
+
+    <div class="container1">
+        <section class="video-container">
+            <h2>Watch this Video to Understand variable</h2>
+            <iframe  src="https://www.youtube.com/embed/tmgWKYBYf-o?si=-_GXRoxqz6wC5KZ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section class="text">
+            <h2>What is a Variable?</h2>
+            <p>A variable is like a box that can hold information. You can name the box and store things in it, like numbers, words, or even more complex data.
+ Think of it as a box where you can put information, label the box, and use it whenever needed.</p>
+
+       
+
+
+
+        <section class="variable-example">
+            <h2>example</h2>
+            <label for="variableInput">Enter a value for the variable:</label>
+            <input type="text" id="variableInput" placeholder="Type something here...">
+            <button onclick="showVariableOutput()">Submit</button>
+            <p id="output"></p>
+        </section>
+               
+ 
+    </section>
+    </div>
+
+    <div class="container2"> 
+        <div class="section1">
+            <h2>Why Use Variables?</h2>
+                    <p>Variables make it easy to store and reuse information in your program. Instead of repeating values, you can use a variable to store them once and refer to them whenever needed.</p>
+            
+           
+                        <h2>Types of Variables</h2>
+                        <p>Variables can store different types of data, depending on the programming language:</p>
+                        <ul>
+                            <li><strong>Integer:</strong> Stores whole numbers (e.g., <code>42</code>).</li>
+                            <li><strong>Float/Double:</strong> Stores decimal numbers (e.g., <code>3.14</code>).</li>
+                            <li><strong>String:</strong> Stores text (e.g., <code>"Hello, World!"</code>).</li>
+                            <li><strong>Boolean:</strong> Stores true or false values (e.g., <code>true</code>, <code>false</code>).</li>
+                            <li><strong>Others:</strong> Includes arrays, objects, etc., depending on the language.</li>
+                        </ul>
+           
+                                 <h2>Rules for Naming Variables</h2>
+                    <ul>
+                        <li>Variable names must start with a letter, an underscore <code>_</code>, or a dollar sign <code>$</code> (in JavaScript).</li>
+                        <li>Variable names cannot contain spaces.</li>
+                        <li>Variable names are case-sensitive, so <code>age</code> and <code>Age</code> are different.</li>
+                    </ul>
+           
+                    </div>
+<div class="section2">
+        <h2>How to Declare a Variable?</h2>
+        <p>Here are examples of how to declare variables in different programming languages:</p>
+    <section class="example">
+     <label for="language">Select Language: </label>
+     <select id="language">
+         <option value="c">C</option>
+         <option value="cpp">C++</option>
+         <option value="java">Java</option>
+         <option value="javascript">JavaScript</option>
+         <option value="python">Python</option>
+     </select>
+ </section>
+     <button onclick="showExample()">Show Variable Example</button>
+ 
+     <pre id="codeExample"></pre>
+    </div>
+
+   
+</body>
+</html> 
+
+ 

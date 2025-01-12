@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    main {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .btn{
+        color:#f4f4f4;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s;
+      }
+    }
+    .video-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    video{
+        width: 100%;
+        max-width: 800px;
+        display: block;
+        margin: 20px auto;
+    }
+    
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+    .content-section {
+        margin-bottom: 40px;
+    }
+    .section {
+        margin-bottom: 40px;
+    }
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.6em;
+        }
+        p {
+            font-size: 1em;
+        }
+    }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <a href="{% url 'calculate_factorial' %}" class="btn"><-Back </a>
+        <h1>Understanding How to Calculate Factorial </h1>
+        
+    </header>
+    
+    <main>
+        <section class="video-container">
+            <h2>Watch This Video to Understand Factorial Calculation</h2>
+            <video controls>
+                <source src="https://youtu.be/J6kngLREzJU" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+       </section>
+    
+        <section class="content-section">
+            <h2>What is a Factorial?</h2>
+            <p>
+                A factorial is the product of all positive integers less than or equal to a given number. The factorial of a number 'n' is denoted as 'n!'.
+                For example, the factorial of 5 (5!) is:
+            </p>
+            <p><strong>5! = 5 × 4 × 3 × 2 × 1 = 120</strong></p>
+        </section>
+    
+        <section class="content-section">
+            <h2>How to Calculate a Factorial?</h2>
+            <p>
+                To calculate the factorial of a number, you start by multiplying the number by each integer less than it, down to 1.
+                Here's a simple step-by-step example for calculating 4!:
+            </p>
+            <ul>
+                <li>4! = 4 × 3 × 2 × 1 = 24</li>
+            </ul>
+            <p>
+                For larger numbers, the same principle applies. The factorial of 6 would be calculated as:
+            </p>
+            <ul>
+                <li>6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</li>
+            </ul>
+        </section>
+        <div class="section">
+            <h2>How Factorial is Used in Code</h2>
+            <p>
+                In programming, calculating the factorial of a number is a common task. Here’s how it works:
+                <br><br>
+                1. *Input*: A user provides a number (n).
+                <br>
+                2. *Factorial Calculation*: The program multiplies all integers from 1 to n together.
+                <br>
+                3. *Output*: The result is displayed to the user.
+                <br><br>
+                Factorial calculations are often used in algorithms related to permutations, combinations, and recursive functions.
+            </p>
+        </div>
+    
+    </main>
+    
+
+</body>
+</html>

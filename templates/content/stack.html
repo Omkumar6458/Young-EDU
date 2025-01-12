@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Stack Implementation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            color: #3a3a3a;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2d2e2e;
+        }
+        .example {
+            background: #eef;
+            padding: 10px;
+            border-left: 4px solid #447d90;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+      
+        .video-container{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+     iframe { 
+            width: 70%;
+            height: 355px;
+        }
+         pre {
+            background: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+            border-left: 4px solid #326377;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            color: #3e3d3d;
+        }
+
+        
+        .stack-container {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            width: 300px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .stack-element {
+            width: 90%;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #4c98af;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .controls input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .controls button {
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            background-color: #31537a;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .controls button:hover {
+            background-color: #418d9a;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: rgb(61, 61, 61);
+            font-size: 1em;
+        }
+.Visualization{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+        @media (max-width: 600px) {
+            .stack-container {
+                width: 90%;
+            }
+
+            .controls input, .controls button {
+                width: 90%;
+            }
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right:20px;
+            background-color:rgb(67, 60, 59);
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .back-btn:hover {
+            background-color:rgb(68, 60, 59);
+        }
+
+    </style>
+</head>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+    <header>
+        <h1>Learn About Stack Implementation</h1>
+    </header>
+    <div class="container">
+
+        <h1>Watch this video to Understand stack</h1>    
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/3h7E8iXqZ4E" title="Learn Functions in Programming Languages"></iframe>
+        </div>
+        <h2>What is a Stack?</h2>
+        <p>A <strong>stack</strong> is a linear data structure that follows the <strong>LIFO</strong> (Last In, First Out) principle. The element that is added last is the first to be removed. Think of it like a stack of plates.</p>
+
+        <div class="example">
+            <strong>Example:</strong> Imagine you have a stack of books. You add books one by one, and when you need one, you take the top book first.
+        </div>
+
+        <h2>How a Stack Works</h2>
+        <p>There are two primary operations:</p>
+        <ul>
+            <li><strong>Push:</strong> Add an element to the top of the stack.</li>
+            <li><strong>Pop:</strong> Remove the top element from the stack.</li>
+        </ul>
+
+        
+        <h2>Stack Implementation in C++</h2>
+        <pre><code>// C++ Code Example
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+
+    // Push elements
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    // Pop and display elements
+    while (!s.empty()) {
+        cout << s.top() << " "; // Access the top element
+        s.pop();                 // Remove the top element
+    }
+    return 0;
+}
+</code></pre>
+
+        <h2>Stack Implementation in Java</h2>
+        <pre><code>// Java Code Example
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        // Push elements
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        // Pop and display elements
+        while (!stack.isEmpty()) {
+            System.out.println(stack.peek()); // Access the top element
+            stack.pop();                      // Remove the top element
+        }
+    }
+}
+</code></pre>
+
+        <h2>Stack Implementation in Python</h2>
+        <pre><code># Python Code Example
+stack = []
+
+# Push elements
+stack.append(10)
+stack.append(20)
+stack.append(30)
+
+# Pop and display elements
+while stack:
+    print(stack[-1])  # Access the top element
+    stack.pop()       # Remove the top element
+</code></pre>
+
+       <section class="Visualization">
+        
+<h1>Stack Visualization</h1>
+<div class="stack-container" id="stackContainer"></div>
+
+<div class="controls">
+    <input type="text" id="stackInput" placeholder="Enter value">
+    <button onclick="pushToStack()">Push</button>
+    <button onclick="popFromStack()">Pop</button>
+    <div class="message" id="message"></div>
+</div>
+
+
+       </section>
+        <script>
+           
+    const stackContainer = document.getElementById('stackContainer');
+    const stackInput = document.getElementById('stackInput');
+    const message = document.getElementById('message');
+
+    let stack = [];
+
+    function updateStackVisualization() {
+        stackContainer.innerHTML = '';
+        stack.forEach(value => {
+            const stackElement = document.createElement('div');
+            stackElement.className = 'stack-element';
+            stackElement.textContent = value;
+            stackContainer.appendChild(stackElement);
+        });
+    }
+
+    function pushToStack() {
+        const value = stackInput.value.trim();
+        if (value === '') {
+            message.textContent = 'Please enter a value to push.';
+            return;
+        }
+        message.textContent = '';
+        stack.push(value);
+        stackInput.value = '';
+        updateStackVisualization();
+    }
+
+    function popFromStack() {
+        if (stack.length === 0) {
+            message.textContent = 'Stack is empty. Nothing to pop!';
+            return;
+        }
+        message.textContent = '';
+        stack.pop();
+        updateStackVisualization();
+    }
+           </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding and Interactive Loops in Programming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            color: rgb(30, 28, 28);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .video-container {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        iframe {
+            width: 600px;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        iframe:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #text-content {
+            width: 50%;
+            max-width: 800px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap;
+        }
+       
+        h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #e7f7e7;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:350px;
+            margin: 20px 10;
+        }
+.container h2{
+    margin-bottom: 20px;
+}
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f7e7;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .example-code {
+            margin-top: 30px;
+            font-family: monospace;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 4px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        #interactive-loops{
+            display: flex;
+gap: 50px;
+        }
+.langloop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+       
+}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            iframe {
+                height: 200px;
+            }
+
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .video-container {
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+
+        
+        .btn {
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          padding: 10px 20px;
+          background-color: #333;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-weight: bold;
+          transition: background-color 0.3s ease, transform 0.2s;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <a href="{% url   'about'    %}" class="btn"><-Back</a>
+    <h1>Understanding Prime Numbers</h1>
+</header>
+
+    <header>
+
+        <h1>Understanding  Loops in Programming</h1>
+    </header>
+
+    <main>
+        <section id="video-content">
+            <h2>Watch this video to understand loop</h2>
+            <div class="video-container">
+                <iframe src="https://i.ytimg.com/vi/pZg_qHaomdA/maxresdefault.jpg" title="Intro to Programming: Loops" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="text-content">
+            <h2 onclick="toggleDescription('loop-description')">What is a Loop?</h2>
+            <div id="loop-description" class="hidden">
+                <p>In programming, a loop is a control structure that allows you to repeat a block of code multiple times, based on a specific condition. This is particularly useful for tasks that require repetition, such as processing items in a list or performing an action until a certain condition is met.</p>
+            </div>
+
+            <h3>Why Use Loops?</h3>
+            <p>Loops help in automating repetitive tasks, making code more efficient and easier to manage. Without loops, you'd have to write the same code multiple times, which is not practical for large-scale operations.</p>
+
+            <h3>Types of Loops</h3>
+            <ul>
+                <li><strong>For Loop:</strong> Executes a block of code a specific number of times. It's commonly used when the number of iterations is known beforehand.</li>
+                <li><strong>While Loop:</strong> Continues to execute as long as a specified condition is true. It's useful when the number of iterations is not known and depends on a condition.</li>
+                <li><strong>Do-While Loop:</strong> Similar to the while loop, but it guarantees that the code block is executed at least once before the condition is tested.</li>
+            </ul>
+
+                  </section>
+    </main>
+
+    <section id="interactive-loops">
+        <div class="container">
+            <h2>For Loop Example</h2>
+            <label for="startValue">Start Value (i):</label>
+            <input type="number" id="startValue" value="1">
+            
+            <label for="endValue">End Value (Limit):</label>
+            <input type="number" id="endValue" value="5">
+            
+            <button onclick="runForLoop()">Run For Loop</button>
+
+            <div class="result" id="forLoopResult"></div>
+
+            
+        </div>
+
+        <div class="container">
+            <h2>While Loop Example</h2>
+            <label for="whileStartValue">Start Value (i):</label>
+            <input type="number" id="whileStartValue" value="1">
+            
+            <label for="whileEndValue">End Value (Limit):</label>
+            <input type="number" id="whileEndValue" value="5">
+            
+            <button onclick="runWhileLoop()">Run While Loop</button>
+
+            <div class="result" id="whileLoopResult"></div>
+
+           
+        </div>
+
+        <div class="container">
+            <h2>Do-While Loop Example</h2>
+            <label for="doWhileStartValue">Start Value (i):</label>
+            <input type="number" id="doWhileStartValue" value="1">
+            
+            <label for="doWhileEndValue">End Value (Limit):</label>
+            <input type="number" id="doWhileEndValue" value="5">
+            
+            <button onclick="runDoWhileLoop()">Run Do-While Loop</button>
+
+            <div class="result" id="doWhileLoopResult"></div>
+
+             </div>
+    </section>
+    <section class="langloop">
+        <h1>Learn Loops in Different Programming Languages</h1>
+        <label for="language">Select a Programming Language:</label>
+        <select id="language">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+        </select>
+        <button onclick="showCode()">Show Loop Code</button>
+        <pre id="codeOutput">Select a language and click "Show Loop Code" to see an example.</pre>
+    
+    </section>
+
+    <section id="quiz-section">
+        <h2>Test Your Knowledge</h2>
+        <div id="quiz">
+            <form id="quizForm">
+                <h3>1. What is a loop in programming?</h3>
+                <label><input type="radio" name="q1" value="A"> A) A structure that defines a variable</label><br>
+                <label><input type="radio" name="q1" value="B"> B) A control structure that repeats a block of code based on a condition</label><br>
+                <label><input type="radio" name="q1" value="C"> C) A data type used to store information</label><br>
+                <label><input type="radio" name="q1" value="D"> D) A method to define functions</label><br>
+    
+                <h3>2. Why are loops useful in programming?</h3>
+                <label><input type="radio" name="q2" value="A"> A) They allow functions to run only once</label><br>
+                <label><input type="radio" name="q2" value="B"> B) They help in automating repetitive tasks efficiently</label><br>
+                <label><input type="radio" name="q2" value="C"> C) They are used to define variables</label><br>
+                <label><input type="radio" name="q2" value="D"> D) They ensure every operation runs without conditions</label><br>
+    
+                <h3>3. Which loop executes a block of code a specific number of times?</h3>
+                <label><input type="radio" name="q3" value="A"> A) For Loop</label><br>
+                <label><input type="radio" name="q3" value="B"> B) While Loop</label><br>
+                <label><input type="radio" name="q3" value="C"> C) Do-While Loop</label><br>
+                <label><input type="radio" name="q3" value="D"> D) Infinite Loop</label><br>
+    
+                <h3>4. Which loop guarantees at least one execution of the code block before testing the condition?</h3>
+                <label><input type="radio" name="q4" value="A"> A) For Loop</label><br>
+                <label><input type="radio" name="q4" value="B"> B) While Loop</label><br>
+                <label><input type="radio" name="q4" value="C"> C) Do-While Loop</label><br>
+                <label><input type="radio" name="q4" value="D"> D) Recursive Loop</label><br>
+    
+                <h3>5. Which loop is best suited when the number of iterations is not known beforehand?</h3>
+                <label><input type="radio" name="q5" value="A"> A) For Loop</label><br>
+                <label><input type="radio" name="q5" value="B"> B) While Loop</label><br>
+                <label><input type="radio" name="q5" value="C"> C) Do-While Loop</label><br>
+                <label><input type="radio" name="q5" value="D"> D) Nested Loop</label><br>
+            </form>
+            <button onclick="checkAnswers()">Submit Quiz</button>
+            <div id="quizResult"></div>
+        </div>
+    </section>
+    
+
+    <script>
+            function checkAnswers() {
+        const answers = {
+            q1: "B",
+            q2: "B",
+            q3: "A",
+            q4: "C",
+            q5: "B"
+        };
+
+        const form = document.getElementById("quizForm");
+        let score = 0;
+        let total = Object.keys(answers).length;
+
+        Object.keys(answers).forEach((q) => {
+            const userAnswer = form[q].value;
+            if (userAnswer === answers[q]) {
+                score++;
+            }
+        });
+
+        const result = document.getElementById("quizResult");
+        result.innerHTML = You scored ${score} out of ${total}.;
+    }
+
+        function runForLoop() {
+            const startValue = parseInt(document.getElementById("startValue").value);
+            const endValue = parseInt(document.getElementById("endValue").value);
+            let result = "";
+            
+            for (let i = startValue; i <= endValue; i++) {
+                result += "Iteration: " + i + "<br>";
+            }
+
+            document.getElementById("forLoopResult").innerHTML = result;
+        }
+
+        function runWhileLoop() {
+            const startValue = parseInt(document.getElementById("whileStartValue").value);
+            const endValue = parseInt(document.getElementById("whileEndValue").value);
+            let result = "";
+            let i = startValue;
+
+            while (i <= endValue) {
+                result += "Iteration: " + i + "<br>";
+                i++;
+            }
+
+            document.getElementById("whileLoopResult").innerHTML = result;
+        }
+
+        function runDoWhileLoop() {
+            const startValue = parseInt(document.getElementById("doWhileStartValue").value);
+            const endValue = parseInt(document.getElementById("doWhileEndValue").value);
+            let result = "";
+            let i = startValue;
+
+            do {
+                result += "Iteration: " + i + "<br>";
+                i++;
+            } while (i <= endValue);
+
+            document.getElementById("doWhileLoopResult").innerHTML = result;
+        }
+
+        function showCode() {
+    const language = document.getElementById('language').value;
+    const codeOutput = document.getElementById('codeOutput');
+
+    const codeExamples = {
+        c: `// Loop example in C
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        printf("Number: %d\\n", i);
+    }
+    return 0;
+}`,
+        cpp: `// Loop example in C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        cout << "Number: " << i << endl;
+    }
+    return 0;
+}`,
+        java: `// Loop example in Java
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Number: " + i);
+        }
+    }
+}`,
+        python: `# Loop example in Python
+for i in range(1, 6):
+    print(f"Number: {i}")`,
+        javascript: `// Loop example in JavaScript
+for (let i = 1; i <= 5; i++) {
+    console.log("Number: " + i);
+}`
+    };
+
+    codeOutput.textContent = codeExamples[language] || "Select a valid language.";
+}
+
+        </script>
+
+</body>
+</html>

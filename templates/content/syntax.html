@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Basic Programming Syntax</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: rgb(65, 64, 64);
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .language-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 45%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .language-card h2 {
+            color: #4c90af;
+        }
+
+        .code-block {
+            background-color: #7ba2bac3;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin-top: 15px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 10px;
+            background-color: #2c4e75;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #4594a0;
+        }
+
+        @media (max-width: 768px) {
+            .language-card {
+                width: 100%;
+            }
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color:rgb(60, 183, 231);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color:rgb(43, 150, 192);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+
+<header>
+    <h1>Learn Basic Programming Syntax</h1>
+    <p>Understand basic commands and syntax of programming languages like C, C++, Java, Python, and JavaScript.</p>
+</header>
+
+<div class="container">
+
+    <div class="language-card">
+        <h2>C Programming</h2>
+        <p class="description">C is a powerful, low-level programming language. Here's how you print a message in C:</p>
+        <div class="code-block">
+            <pre>#include <stdio.h>  // Include the standard input/output library
+
+int main() {
+    printf("Hello, World!");  // Print message to the screen
+    return 0;
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/cprogramming/" class="btn" target="_blank">Learn More about C</a>
+    </div>
+
+    <div class="language-card">
+        <h2>C++ Programming</h2>
+        <p class="description">C++ is an extension of C and supports object-oriented programming. Here's how you print a message in C++:</p>
+        <div class="code-block">
+            <pre>#include <iostream>  // Include the I/O library
+
+using namespace std;
+
+int main() {
+    cout << "Hello, World!";  // Print message to the screen
+    return 0;
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/cplusplus/" class="btn" target="_blank">Learn More about C++</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="language-card">
+        <h2>Java Programming</h2>
+        <p class="description">Java is a versatile, high-level programming language. Here's how you print a message in Java:</p>
+        <div class="code-block">
+            <pre>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");  // Print message to the screen
+    }
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/java/" class="btn" target="_blank">Learn More about Java</a>
+    </div>
+
+    <div class="language-card">
+        <h2>Python Programming</h2>
+        <p class="description">Python is a popular language due to its readability. Here's how you print a message in Python:</p>
+        <div class="code-block">
+            <pre>print("Hello, World!")  # Print message to the screen</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/python/" class="btn" target="_blank">Learn More about Python</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="language-card">
+        <h2>JavaScript Programming</h2>
+        <p class="description">JavaScript is a language primarily used for web development. Here's how you print a message in JavaScript:</p>
+        <div class="code-block">
+            <pre>console.log("Hello, World!");  // Print message to the screen</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/javascript/" class="btn" target="_blank">Learn More about JavaScript</a>
+    </div>
+
+</div>
+
+</body>
+</html>

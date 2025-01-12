@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Topics</title>
+    <link rel="stylesheet" href="{% static 'css/contentStyle.css' %}">
+    <script src="{% static 'js/contentjs.js' %}"></script>
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right:20px;
+            background-color:lightblue
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .back-btn:hover {
+            background-color:lightcyan;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="back-btn" id ="back-btn"><B> Home </b></a>
+    <div class="menu-bar">
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    </div>
+    
+    <div  class="sidebar" id="sidebar">
+<h1 class="heading">Topic</h1>
+<div class="topic">
+    <h3 onclick="toggleSubtopics('basic')">Basic</h3>
+    <ul id="basic" class="subtopics" style="display: none;">
+        
+        <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'start' %}">Introduction to coding</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'start' %}">Basic Commands</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'variable' %}">Variable</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'loop1' %}">Loop</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'Condition' %}">Condition</a></li>
+        <li><a style="text-decoration: none; color: aliceblue;" href="{% url 'Function' %}">Function</a></li>
+        <li ><a style="text-decoration: none; color: aliceblue;" href="{% url 'Syntax' %}">Syntax</a></li>
+    </ul>
+</div>
+
+
+
+<div class="topic">
+            <h3 onclick="toggleSubtopics('math')">Math</h3>
+            <ul id="math" class="subtopics">
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'calculate_factorial' %}">Factorial</a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'calculate_prime' %}">Prime Number</a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'calculate_armstrong' %}">Arm Strong </a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'Fibonacci' %}">Fibonacci Series </a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'reverse_string' %}">Reverse String </a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'check_leap_year' %}">Leap Year </a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'sumofdigit' %}">Sum of Digits </a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'evenodd' %}">Even-odd</a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'palin' %}">Palindrone Number</a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'gcd' %}">GCD</a></li>
+                <li><a  style="text-decoration: none; color: aliceblue;"href="{% url 'gcd' %}">LCM</a></li>
+                
+              
+            </ul>
+        </div>
+        <div class="topic">
+            <h3 onclick="toggleSubtopics('dataStructure')">Data Structure</h3>
+            <ul id="dataStructure" class="subtopics">
+      
+
+
+                
+              <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'array1' %}">Array</a> </li>
+              <li> <a style="text-decoration: none; color: aliceblue;" href="{% url 'linked' %}">LinkedList</a> </li>
+              <li> <a style="text-decoration: none;color: aliceblue;" href="{% url 'stack1' %}">Stack</a> </li>
+             <li>  <a style="text-decoration: none; color: aliceblue;" href="{% url 'q' %}">Queue</a> </li>
+        
+             <li><a style="text-decoration: none; color: aliceblue;" href="{% url 't' %}">Tree</a>  </li>
+
+         
+            </ul>
+        </div>
+    </div>
+    <div class="content" id="content">
+        <div class="contentContainer" style="padding-top:0%">
+            <h1>Welcome !</h1>
+            <p>Learn form basic to advance in simple and creative way ...</p>
+            <img src="{% static 'images/C:\Users\DELL\Desktop\EDU\PROJECT\static\images\DALL·E 2025-01-09 01.47.15 - An animated illustration depicting the Fibonacci sequence. The image shows numbers forming the sequence (e.g., 0, 1, 1, 2, 3, 5, 8) inside glowing cir.webp' %}" class="contentimg" style="width: 910px; height: 500px;">>
+        </div>
+    
+    </div>
+       
+</div>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{% block title %}Teacher{% endblock %}</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+  <style>
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: black; /* Default text color black */
+    }
+
+    .about-section {
+      color: black; /* Text color black */
+      padding: 50px 20px;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 0 auto 30px;
+      max-width: 800px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      color: black; /* Text color black */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-learn {
+      background-color: black; /* Button background black */
+      color: white; /* Button text white */
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .btn-learn:hover {
+      background-color: #ffd700; /* Yellow on hover */
+      transform: scale(1.05);
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta-section a {
+      margin: 10px;
+      display: inline-block;
+    }
+
+
+    .top_container {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .teacher_section {
+      
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .teacher_section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .teacher_section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .teacher_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      
+      background: white;
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card h5 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #666;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="top_container">
+
+    {% block header %}
+    <!-- Header Section -->
+    {% include 'header.html' %}
+    {% endblock %}
+
+    <!-- Teachers Section -->
+
+    <div>
+      <section id="teachers" class="teacher_section layout_padding-bottom">
+
+        <h2 class="about-section" style="color:lightskyblue">
+          Meet our Team
+        </h2>
+        <p class="text-center">
+Meet Our Coding Mentors team🌟
+Who are passionate about coding and education. Together they create this platform to help Kids learn the Foundation and Mathematical concept of coding in Fun and Interactive way!
+        </p>
+        <div class="teacher_container layout_padding2">
+
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/Screenshot 2025-01-09 181152.png' %}" alt="Teacher Den Mark">
+              <div class="card-body">
+                <h5 class="card-title">Nitish</h5>
+                <p style="color: orange;"> Specialty: HTML, CSS, and Figma </p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/Screenshot 2025-01-09 181350.png' %}" alt="Teacher Leena Jorj">
+              <div class="card-body">
+                <h5 class="card-title">Suraj Soni</h5>
+                <p style="color: orange;">Specialty: Mathematic and Logical Aptitude </p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/WhatsApp Image 2025-01-09 at 6.17.22 PM.jpeg' %}" alt="Teacher Magi Den">
+              <div class="card-body">
+                <h5 class="card-title">Om kumar </h5>
+                <p style="color: orange;">Specialty: Data Structure and Algorithm </p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'images/WhatsApp Image 2025-01-10 at 4.32.03 PM.jpeg' %}" alt="Teacher Jonson Mark">
+              <div class="card-body">
+                <h5 class="card-title" > Sanjana Kumari  </h5>
+              
+                <p style="color: orange;"> Speciality: CORE java and UI/UX </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

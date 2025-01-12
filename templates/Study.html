@@ -1,0 +1,331 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{% block title %}Adward{% endblock %}</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" /> 
+  <link href="{% static 'css/grid.css' %}" rel="stylesheet" />
+
+
+</head>
+
+<body>
+  <div class="top_container">
+
+    
+    {% block header %}
+    <!-- Header Section -->
+    {% include 'header.html' %}
+    
+    {% endblock %}
+    
+    <div class = "ok">
+
+    <h2 style="border: 0ch;  color: lightblue;"> 
+  
+    <p style="color: yellow;"> Young learner</p>
+    <br>
+      This page is designed to help you analyze coding algorithms in a simple and interactive way. Our goal is to make learning coding logic both fun and easy to understand. </h2>
+
+    
+     <br>
+
+    </div>
+  
+
+  <div class="container">
+    <!-- Factorial Block -->
+    
+<div class='x'>
+    <!-- Block 2 -->
+    <form action="{% url 'calculate_factorial' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Factorial1️⃣</div>
+          Coding
+        </div>
+      </button>
+    </form>
+
+    <!-- Block 3 -->
+    <form action="{% url 'calculate_armstrong' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Arm Strong2️⃣</div>
+          Block 3
+        </div>
+      </button>
+    </form>
+
+    <!-- Block 4 -->
+    <form action="{% url 'Fibonacci' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Fibonacci 3️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'calculate_prime' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Prime Number4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+  </div>
+
+
+
+  <div class='x'>
+    <form action="{% url 'check_leap_year' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Leap Year4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+
+    <form action="{% url  'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Reverse String5️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    <form action="{% url 'sorting' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Sorting 6️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    <form action="{% url 'variable' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Variable7️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+  </div>
+
+
+
+  <div class='x'>
+    <form action="{% url 'learn' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">Loop8️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">9️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+    
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">🔟</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">1️⃣1️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+  </div>
+
+  <div class='x'>
+    
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">1️⃣2️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+    
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">1️⃣3️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+        
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">1️⃣4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">1️⃣5️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+    
+    
+  </div>
+
+
+  <div class='x'>
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+  </div>
+
+
+  <div class='x'>
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+    
+
+
+    <form action="{% url 'reverse_string' %}" method="get">
+      <button type="submit" class="block">
+        <div>
+          <div class="block-icon">4️⃣</div>
+          Block 4
+        </div>
+      </button>
+    </form>
+    <div>
+
+  </div>
+
+
+
+
+
+
+ 
+
+
+
+
+</body>
+</html>

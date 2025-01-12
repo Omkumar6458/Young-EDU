@@ -1,0 +1,256 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About Conditional Statements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            text-align: center;
+            padding-top: 40px;
+            color: rgb(65, 64, 64);
+        }
+
+        .h1 {
+            text-align: center;
+            font-size: 20px;
+        }
+.content{
+    padding: 20px;
+}
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 0 20px; /* Added padding for better layout */
+        }
+
+        .language-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 45%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .language-card h2 {
+            color: #4c90af;
+        }
+
+        .code-block {
+            background-color: #7ba2bac3;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin-top: 15px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 10px;
+            background-color: #2c4e75;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #4594a0;
+        }
+
+        iframe {
+            position: relative;
+            left: 50px;
+            height: 355px;
+            width: 70%;
+        }
+
+        .example-code {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 5px solid #00aaff;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .language-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            iframe {
+                width: 100%;
+                left: 0;
+            }
+
+            .container {
+                padding: 0 10px; 
+            }
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color:rgb(60, 183, 231);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color:rgb(43, 150, 192);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'introduction' %}" class="back-btn" id="back-btn"><-Back </a>
+<header>
+    <h1>Learn About Conditional Statements</h1>
+</header>
+
+<section class="content">
+    <h1>Watch this video to Understand Condition Statements</h1>    
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/3h7E8iXqZ4E" title="Learn Functions in Programming Languages"></iframe>
+    </div>
+
+    <h2>What Are Conditional Statements?</h2>
+    <p>Conditional statements allow us to make decisions in our programs. They let the program decide which action to take based on whether a condition is true or false.</p>
+    <p>In most programming languages, the basic structure of a conditional statement is:</p>
+    <pre class="example-code">if (condition) {
+    // Code to run if the condition is true
+} else {
+    // Code to run if the condition is false
+}</pre>
+
+    <p>Now, let's see how this works in different languages!</p>
+</section>
+
+<div class="container">
+    <div class="language-card">
+        <h2>C Programming</h2>
+        <p class="description">C allows us to use conditional statements like <code>if-else</code> to control the flow of our program. Here's an example:</p>
+        <div class="code-block">
+            <pre>#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 18;
+    if (age >= 18) {
+        printf("You are an adult.\n");
+    } else {
+        printf("You are a minor.\n");
+    }
+    return 0;
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/cprogramming/" class="btn" target="_blank">Learn More about C</a>
+    </div>
+
+    <div class="language-card">
+        <h2>C++ Programming</h2>
+        <p class="description">C++ extends C and supports object-oriented programming. Here's an example of an <code>if-else</code> statement:</p>
+        <div class="code-block">
+            <pre>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+    int age = 18;
+    if (age >= 18) {
+        cout &lt;&lt; "You are an adult." &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "You are a minor." &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/cplusplus/" class="btn" target="_blank">Learn More about C++</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="language-card">
+        <h2>Java Programming</h2>
+        <p class="description">Java uses <code>if-else</code> statements for decision-making. Here's an example:</p>
+        <div class="code-block">
+            <pre>public class Main {
+    public static void main(String[] args) {
+        int age = 18;
+        if (age >= 18) {
+            System.out.println("You are an adult.");
+        } else {
+            System.out.println("You are a minor.");
+        }
+    }
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/java/" class="btn" target="_blank">Learn More about Java</a>
+    </div>
+
+    <div class="language-card">
+        <h2>Python Programming</h2>
+        <p class="description">Python uses simple and readable syntax. Here's an example of an <code>if-else</code> statement:</p>
+        <div class="code-block">
+            <pre>age = 18
+if age >= 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/python/" class="btn" target="_blank">Learn More about Python</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="language-card">
+        <h2>JavaScript Programming</h2>
+        <p class="description">In JavaScript, <code>if-else</code> statements are used similarly. Here's an example:</p>
+        <div class="code-block">
+            <pre>let age = 18;
+if (age >= 18) {
+    console.log("You are an adult.");
+} else {
+    console.log("You are a minor.");
+}</pre>
+        </div>
+        <a href="https://www.tutorialspoint.com/javascript/" class="btn" target="_blank">Learn More about JavaScript</a>
+    </div>
+</div>
+
+</body>
+</html>

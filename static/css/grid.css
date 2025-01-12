@@ -1,0 +1,44 @@
+
+.container{
+  justify-content: center;
+  align-items: center;
+  padding: -10px;
+  grid-template-columns: repeat(4, 1fr); 
+}
+.x{
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  gap: 40px;
+  justify-content: space-evenly;
+  
+  
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 18px; /* Fixed incorrect backticks */
+  padding: 20px; /* Adjusted padding to a more reasonable size */
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.block:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.block-icon {
+  font-size: 20px; /* Adjust icon size */
+  margin-bottom: 8px; /* Space between icon and text */
+}
+
+/* Make block 4 span across all columns */
+

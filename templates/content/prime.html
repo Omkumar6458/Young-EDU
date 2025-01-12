@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Prime Numbers</title>
+    <style>
+        body{
+            background-color: rgb(221, 221, 217);
+
+        }
+        header{
+            text-align: center;
+        }
+        .container1{
+            padding: 0 10px;
+            display: flex;
+flex-direction: column;
+align-items: center;        }
+        .video-container {
+            width:70%;
+            text-align: center;
+            margin: 10px 0;
+        }
+       
+     .info-container{
+            width: 80%;
+
+        } 
+        
+       iframe{
+        border-radius: 10px;
+
+       }
+         .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .explanation {
+            margin-top: 20px;
+            text-align: left;
+            color: #555;
+        }
+   .checkprime{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px auto;
+   }
+   </style>
+</head>
+<body>
+    <header>
+        <h1>Learn About Prime Numbers</h1>
+    </header>
+    <main >
+        <div class="container1">
+            <section class="video-container">
+                <h2>Watch this Video to Understand Prime Number</h2>
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/MJcckSfoYdI?si=3Mwix27D_Oj9U7T0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </section>
+    
+            <section class="info-container">    
+                <h2>What is a Prime Number?</h2>
+        <p>A prime number is a special number greater than 1. It can only be divided evenly by 1 and itself. For example, 2, 3, 5, and 7 are all prime numbers.</p>
+
+
+            <h3>Examples of Prime Numbers:</h3>
+            <p>Here are some examples of prime numbers: 2, 3, 5, 7, 11, 13, 17, 19...</p>
+            <p>Let’s take 7 as an example. It can only be divided evenly by 1 and 7, so it is a prime number.</p>
+
+            <h3>How to Identify Prime Numbers:</h3>
+            <p>1. Start with a number greater than 1.<br>
+               2. Check if it can be divided evenly by any number other than 1 and itself.<br>
+               3. If not, it is a prime number!</p>
+    </section>
+</div>
+<section class="checkprime">
+
+     <h1> check which Number is prime</h1>
+    <div class="container">
+        <p>Enter a number below to check if it's a prime number:</p>
+        <input type="number" id="numberInput" placeholder="Enter a number" />
+        <button onclick="checkPrime()">Check</button>
+        <div id="result"></div>
+        <div id="explanation" class="explanation"></div>
+    </div>
+</section>
+
+</div>
+
+
+    </main>
+<script>
+    
+    function checkPrime() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');
+            const explanationDiv = document.getElementById('explanation');
+
+            if (isNaN(number) || number < 1) {
+                resultDiv.textContent = "Please enter a positive integer.";
+                explanationDiv.textContent = "";
+                return;
+            }
+
+            if (number === 1) {
+                resultDiv.textContent = "1 is not a prime number.";
+                explanationDiv.textContent = "By definition, a prime number is a number greater than 1 that has no divisors other than 1 and itself.";
+                return;
+            }
+
+            let isPrime = true;
+            let steps = `Checking divisors for ${number}:\n`;
+
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                steps += `\nIs ${number} divisible by ${i}? `;
+                if (number % i === 0) {
+                    steps += `Yes (divides evenly)`;
+                    isPrime = false;
+                    break;
+                } else {
+                    steps += `No`;
+                }
+            }
+
+            if (isPrime) {
+                resultDiv.textContent = `${number} is a prime number!`;
+                explanationDiv.textContent = `${steps}\n\nConclusion: ${number} has no divisors other than 1 and itself, so it is a prime number.`;
+            } else {
+                resultDiv.textContent = `${number} is not a prime number.`;
+                explanationDiv.textContent = `${steps}\n\nConclusion: ${number} has divisors other than 1 and itself, so it is not a prime number.`;
+            }
+        }
+
+
+      
+</script>
+    </body>
+</html> 

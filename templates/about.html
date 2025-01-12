@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Learn Coding</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: black; /* Default text color black */
+    }
+
+    .about-section {
+      color: black; /* Text color black */
+      padding: 50px 20px;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 0 auto 30px;
+      max-width: 800px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      color: black; /* Text color black */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-learn {
+      background-color: black; /* Button background black */
+      color: white; /* Button text white */
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .btn-learn:hover {
+      background-color: #ffd700; /* Yellow on hover */
+      transform: scale(1.05);
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta-section a {
+      margin: 10px;
+      display: inline-block;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="top_container">
+
+    {% block header %}
+    {% include 'header.html' %}
+    {% endblock %}
+
+    <main>
+      <section class="about-section">
+        <h2>About Our Coding Initiative</h2>
+        <p>
+          Welcome to our interactive coding platform designed specifically for students under the 10th standard! Here, you
+          can explore the basics of programming, understand logic, and develop problem-solving skills in a fun and exciting way.
+        </p>
+         
+        
+       <div class ="about-content">
+          <div class="card">
+            <a href="{% url 'introduction' %}" >
+            <img src="{% static 'images/logo.png' %}" alt="Logic">
+            <h3>Learn Logic</h3>
+            <p>
+              Start your journey by understanding the logic behind coding. Learn to think like a programmer!
+            </p>
+          </a>
+          </div>
+        
+          <div class="card">
+         
+            <img src="{% static 'images/kids.jpg' %}" alt="Coding">
+            <h3>Write Code</h3>
+            <p>
+              Write your first program and see the magic happen. It's easier than you think!
+            </p>
+          </a>
+          </div>
+          <div class="card" >
+            <a href="{% url 'quiz' %}" >
+            <img src="{% static 'images/search-icon.png' %}" alt="Projects">
+            <h3>Test Yourself</h3>
+            <p>
+              Apply what you learn by creating fun projects and sharing them with friends.
+            </p>
+          </a>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <a href="{% url 'about' %}" class="btn-learn">Learn More</a>
+          <a href="{% url 'quiz' %}" class="btn-learn">Try It Yourself</a>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+ 
+</body>
+
+</html>

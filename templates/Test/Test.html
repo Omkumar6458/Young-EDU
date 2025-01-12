@@ -1,0 +1,60 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Learn Coding</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+</head>
+<style>
+  .coming-soon{
+    padding-top: 200px;
+    padding-left: 250px;
+  }
+</style>
+
+  
+
+<body>
+
+  <div class="top_container">
+
+    {% block header %}
+    {% include 'header.html' %}
+    {% endblock %} 
+
+    <div class='coming-soon'>
+      <h1 style="color: blue; border: 10ch;"> Comming Soon !</h1>
+      <h2 style="color: blue border;"> Stay tune </h2>
+    </div>
+
+  </div>
+  </html>
+
+
+  <li onclick="loadContent('{% url 'basic_commands_and_syntax' %}')">Basic Commands and Syntax</li>
+  <li onclick="loadContent('{% url 'variable' %}')">Variable</li>
+  <li onclick="loadContent('{% url 'loop' %}')">Loop</li>
+  <li onclick="loadContent('{% url 'conditional' %}')">Condition</li>
+  <li onclick="loadContent('{% url 'function' %}')">Function</li>
+
+
+
+
+
+
+
+
+  <a href="{% url 'basic_command' %}" id="loadQuiz" style="color:lightblue;">
+    Introduction to Coding
+</a>
+
+<li><a href="{% url 'basic_command' %}">Basic Commands and Syntax</a></li>

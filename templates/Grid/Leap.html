@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .video-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="{% url 'calculate_leap_year' %}" class="btn"><-Back</a>
+        <h1>Understanding Leap Years</h1>
+    </header>
+
+    <main>
+        <section class="video-container">
+            <h2>Watch This Video to Understand Leap Years</h2>
+            <video controls>
+                <source src="https://youtu.be/your-video-url" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section class="content-section">
+            <h2>What is a Leap Year?</h2>
+            <p>
+                A leap year is a year that has 366 days instead of the usual 365 days. 
+                This extra day, February 29, is added to the calendar to keep it synchronized with the Earth's orbit around the Sun.
+                For example:
+            </p>
+            <p><strong>Leap Years: 2020, 2024, 2028...</strong></p>
+        </section>
+
+        <section class="content-section">
+            <h2>How to Determine a Leap Year?</h2>
+            <p>
+                To determine if a year is a leap year, follow these rules:
+            </p>
+            <ul>
+                <li>The year is evenly divisible by 4.</li>
+                <li>If the year is divisible by 100, it must also be divisible by 400.</li>
+                <li>Otherwise, it is not a leap year.</li>
+            </ul>
+            <p>For example:</p>
+            <ul>
+                <li>2000 → Divisible by 4 and 400 → Leap Year</li>
+                <li>1900 → Divisible by 4 but not 400 → Not a Leap Year</li>
+                <li>2024 → Divisible by 4 → Leap Year</li>
+            </ul>
+        </section>
+
+        <div class="section">
+            <h2>How Leap Years are Used in Code</h2>
+            <p>
+                Leap year calculations are often implemented in programming. Here’s how:
+                <br><br>
+                1. *Input*: A user enters a year to check.
+                <br>
+                2. *Calculation*: The program applies the divisibility rules.
+                <br>
+                3. *Output*: The result indicates whether the year is a leap year.
+                <br><br>
+                Leap year logic is used in calendar systems and date validations.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

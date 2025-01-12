@@ -1,0 +1,65 @@
+{% load static %}
+
+ <header class="header_section">
+  <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="{% url 'home' %}">
+              <img src="{% static 'images/logo.png' %}" alt="Adward">
+              <span>Young Learner</span>
+          </a>
+         
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+           <!-- home link -->
+   <li class="nav-item">
+   
+    <form action="{% url 'home' %}" method="get">
+        <button type="submit" class="nav-link btn" >Home</button>
+    </form>
+   </li>
+
+<!-- about link -->
+  <li class="nav-item">
+    <form action="{% url 'about' %}" method="get">
+        <button type="submit" class="nav-link btn">About</button>
+    </form>
+   </li>
+
+<!-- teachers link -->
+   <li class="nav-item">
+    <form action="{% url 'teachers' %}" method="get">
+        <button type="submit" class="nav-link btn">Teachers</button>
+    </form>
+   </li>
+
+
+  
+
+    <li class="nav-item">
+        <form action="{% url 'introduction' %}" method="get">
+            <button type="submit" class="nav-link btn">Content</button>
+        </form>
+        </li>
+
+    <li class="nav-item">
+        <form action="{% url 'quiz' %}" method="get">
+            <button type="submit" class="nav-link btn">Quiz</button>
+        </form>
+     </li>
+    
+
+<!-- contact link -->
+    <li class="nav-item">
+    <form action="{% url 'contact' %}" method="get">
+        <button type="submit" class="nav-link btn">Contact Us</button>
+    </form>
+    </li>
+
+       
+           
+         
+          </div>
+      </nav>
+  </div>
+</header>
